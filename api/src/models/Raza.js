@@ -5,10 +5,11 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Raza', {
     id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       unique: true,
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
@@ -38,7 +39,7 @@ module.exports = (sequelize) => {
 
     },
     lifeSpan: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
 
     },
     image: {
