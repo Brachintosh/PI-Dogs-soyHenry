@@ -2,7 +2,8 @@
 import { GET_DOGS } from'../actions/index';
 
 const initialState = {
-    todos: [],       // BACKUP QUE MANTENGO LOS DATOS QUE RECIBE DEL BACK-END
+    detalles: [],
+    filtered: [],       // BACKUP QUE MANTENGO LOS DATOS QUE RECIBE DEL BACK-END
     perros: [],      // ARREGLO DE PERROS QUE VAN A SER RENDERIZADOS.
     temperamentos: [],
 }
@@ -19,6 +20,9 @@ export default function rootReducer(state = initialState, action) {
                 todos: action.payload,      // Mantengo a los pjs de la forma que vienen del back-end
             }
 
-        default: return state
+        default:
+            return {
+                state
+            }
     }
 }

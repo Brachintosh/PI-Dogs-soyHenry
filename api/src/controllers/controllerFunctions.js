@@ -61,7 +61,7 @@ const getRazas = async () => {
             lifeSpan: raza.lifeSpan,
             breed_group: raza.breed_group,
             created: true,
-            temperament: raza.temperament.map((temp) => temp.name),
+            temperament: raza.temperament?.map((temp) => temp.name),
         }
     });
 

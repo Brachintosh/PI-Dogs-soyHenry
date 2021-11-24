@@ -1,11 +1,12 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { obtainDogs } from './redux/actions';
 import Landing from './components/Landing/landing.jsx';
-import AllCards from './components/Cards/allCards.jsx';
-
+import Home from './components/Home/home.jsx';
+import Details from './components/Details/details.jsx';
+import Create from './components/Create/create.jsx';
 
 function App() {
   
@@ -17,12 +18,16 @@ function App() {
   
   
   return (
-    <React.Fragment>
-
-      <Route exact path='/' component={Landing} />
-      <Route exact path='/home' component={AllCards} />
-
-    </React.Fragment>
+    <BrowserRouter>
+      <div className='App'>
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/home' component={Home} />
+          <Route path='/create' component= {Create}/>
+          <Route path='/:id' component= {Details}/>
+        </Switch>  
+      </div>  
+    </BrowserRouter>
   );
 }
 

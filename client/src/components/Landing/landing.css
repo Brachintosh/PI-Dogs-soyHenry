@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height:100vh;
+    background-image: url(https://cdn2.thedogapi.com/images/BFRYBufpm.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.link-home { 
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.access-btn { 
+    border: none;
+    border-radius: 4px;
+    background-color: #009bcfcb;
+    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.527);
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 40px;
+    text-shadow: 0.9px 0.9px rgb(238, 225, 225);
+    transition: background-color font-size cursor text-shadow; /* usar "all"*/
+    transition-duration: 0.7s;
+}
+
+.access-btn:hover { 
+    background-color: #4caf4fd3;
+    color: white;
+    font-size: 48px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-shadow: 0.9px 0.9px rgba(32, 32, 32, 0.795);
+}
