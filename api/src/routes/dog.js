@@ -42,7 +42,6 @@ router.post('/', async (req, res, next) => {
         });
 
         newBreed.addTemperamento(tempsBreed);
-        console.log(newBreed);
 
         res.status(200).send(newBreed);
     } catch (error) {
