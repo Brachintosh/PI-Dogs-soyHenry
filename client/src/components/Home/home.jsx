@@ -12,21 +12,23 @@ import { obtainDogs, obtainTemperament } from "../../redux/actions";
 
 export default function Home(){
 
-    // const dispatch = useDispatch();
-    // const allDogs = useSelector((state) => state.perros);
+    const dispatch = useDispatch();
+    const allDogs = useSelector((state) => state.perros);
     
     
-    // useEffect(() => {           
-    //     dispatch(obtainDogs()); 
-    //     dispatch(obtainTemperament());
-        
-        
-    // }, [dispatch])
+    useEffect(() => {           
+        dispatch(obtainDogs()); 
+        dispatch(obtainTemperament());
+                
+    }, [dispatch])
 
     return(
+        
         <div>
             <div>
-                <h2>Perros !</h2>
+
+                <h2>Perros !</h2> <hr/>
+                <span>La info va aca...</span>
             </div>
         </div>
     )
