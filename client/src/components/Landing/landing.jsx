@@ -7,6 +7,7 @@ export default function Landing() {
         <div className="container">
             <div className="link-home">
                 <Link to='/home'>
+                <h2>Welcome to DogSite the place where you learn more about your dogs!</h2><br/><br/>
                     <button className="access-btn">ENTER</button>
                 </Link>
             </div>

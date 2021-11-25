@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { obtainDogs } from './redux/actions';
-import Landing from './components/Landing/landing.jsx';
-import Home from './components/Home/home.jsx';
-import Details from './components/Details/details.jsx';
-import Create from './components/Create/create.jsx';
+import Landing from './components/Landing/Landing.jsx';
+import Home from './components/Home/Home.jsx';
+import Details from './components/Details/Details.jsx';
+import Create from './components/Create/Create.jsx';
 
 function App() {
   
@@ -23,7 +23,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route exact path='/home' component={Home} />
-          <Route path='/create' component= {Create}/>
+          <Route path='/create_breed' component= {Create}/>
           <Route path='/:id' component= {Details}/>
         </Switch>  
       </div>  
