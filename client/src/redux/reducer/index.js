@@ -1,31 +1,27 @@
 // Importar las acciones que van a ser utilizadas:
-import { GET_DOGS, GET_TEMPS, GET_BY_QUERY, GET_DOG_DETAILS, /*FILTER_TEMPS,
-FILTER_BREED, ORDER_WEIGHT, ORDER_HEIGHT, ORDER_AZ */} from'../actions/index';
-
-const initialState = {
-    detalles: [],
-    filtrados: [],       // BACKUP QUE MANTENGO LOS DATOS QUE RECIBE DEL BACK-END
-    perros: [],          // ARREGLO DE PERROS QUE VAN A SER RENDERIZADOS.
-    temperamentos: [],
-}
+import { GET_DOGS, GET_TEMPS, GET_BY_QUERY, GET_DOG_DETAILS, FILTER_TEMPS,
+FILTER_BREED, ORDER_AZ/* ORDER_WEIGHT, ORDER_HEIGHT*/} from'../actions/index';
 
 // ACTION >>> TYPE && PAYLOAD.
+let initialState = {
+    todos: [],      // Mantengo a los pjs de la forma que vienen del back-end.
+    perros: [], // ARREGLO DE PJS que renderizamos.
+    detalles: {},
+    temperamentos: [],
+
+}
 
 export default function rootReducer(state = initialState, action) {
     
+
     switch(action.type) {
 
         case GET_DOGS:
             return {
                 ...state,
-                perros: action.payload,
-                todos: action.payload,      // Mantengo a los perritos de la forma que vienen del back-end.
+                perros: action.payload,    // ARREGLO DE PERROS QUE VAN A SER RENDERIZADOS.
+                todos: action.payload      // BACKUP QUE MANTENGO LOS DATOS QUE RECIBE DEL BACK-END.
             };
-
-        // case ADD_DOG:
-        //     return {
-        //         ...state,
-        //     };
 
         case GET_TEMPS:
             return {
@@ -36,7 +32,7 @@ export default function rootReducer(state = initialState, action) {
         case GET_DOG_DETAILS:
             return {
                 ...state,
-                detlles: action.payload,
+                detalles: action.payload,
             };
 
         case GET_BY_QUERY:
@@ -44,16 +40,26 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 perros: action.payload,
             };
-
+            
+        // revisar...
         // case FILTER_TEMPS:
-        //     return {
+        //     // const allTemps = state.temperamentos;
+        //     const statusFiltered = action.payload === 'Temperamentos' ? state.filtrados : state.filtrados?.filter(e => e.temperamentos?.includes(action.payload));
 
+        //     return {
+        //         ...state,
+        //         perros: statusFiltered,
         //     };
 
-        // case FILTER_BREED:
-        //     return {
+        case FILTER_BREED:
 
-        //     };
+            const allBreeds = state.todos;
+            const statusFilteredBreed = action.payload === 'created' ? allBreeds.filter(el => el.created) : allBreeds.filter( el => !el.created)
+
+            return {
+                ...state,
+                perros: action.payload === 'All' ? state.todos : statusFilteredBreed
+            };
 
         // case ORDER_WEIGHT:
         //     return {
@@ -65,14 +71,20 @@ export default function rootReducer(state = initialState, action) {
 
         //     };
 
-        // case ORDER_AZ:
-        //     return{
+        case ORDER_AZ:
+            return{
+            ...state,
+            perros: state.perros.sort((a,b) => {
+                if(a.name < b.name) {
+                    return -1;
+                }
+                if(b.name < a.name) {
+                    return 1;
+                }
+                return 0;
+            })
+        };
 
-        //     };
-
-        default:
-            return {
-                state
-            }
+        default: return state;
     };
 };

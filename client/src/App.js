@@ -5,8 +5,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { obtainDogs } from './redux/actions';
 import Landing from './components/Landing/Landing.jsx';
 import Home from './components/Home/Home.jsx';
-import Details from './components/Details/Details.jsx';
 import Create from './components/Create/Create.jsx';
+import Details from './components/Details/Details.jsx';
 
 function App() {
   
@@ -24,7 +24,8 @@ function App() {
           <Route exact path='/' component={Landing} />
           <Route exact path='/home' component={Home} />
           <Route path='/create_breed' component= {Create}/>
-          <Route path='/:id' component= {Details}/>
+          <Route path='/home/:id' component= {Details}/>
+          {/* <Route path='/create' component={Form} /> */}
         </Switch>  
       </div>  
     </BrowserRouter>

@@ -22,7 +22,7 @@ modelTemperamento(sequelize);
 // Para relacionarlos hacemos un destructuring
 const { Raza, Temperamento } = sequelize.models;
 
-// Aca vendrian las relaciones
+// Aca vendrian las relaciones:
 // Product.hasMany(Reviews);
 Raza.belongsToMany(Temperamento, {through: 'raza-temperamento'});
 Temperamento.belongsToMany(Raza, {through: 'raza-temperamento'});

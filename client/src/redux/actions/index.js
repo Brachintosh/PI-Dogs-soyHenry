@@ -24,11 +24,11 @@ export function obtainDogs() {
     return async function(dispatch) {
         // Hacer el pedido a nuestro back-end:
         const requestDogs = await axios.get(URL_GET);
-
         dispatch({
             type: GET_DOGS,
             payload: requestDogs.data,
         });
+        // console.log(requestDogs.data);
     };
 };
 
@@ -45,7 +45,7 @@ export function obtainTemperament() {
 
     return async function(dispatch){
         const requestTemps = await axios.get(URL_TEMPERAMENT);
-
+        // console.log({"requestTemps": requestTemps});
         dispatch({
             type: GET_TEMPS,
             payload: requestTemps.data,
@@ -66,17 +66,16 @@ export function getByQueryName(name) {
 };
 
 // Buscar un perro por su ID:
-export function obtainOneDog(id) {
-    return async function(dispatch) {
-        const infoDog = await axios.get(URL_GET + id);
-
+export function getDogDetails (id){
+    return async function (dispatch){
+        const infoDetails = await axios.get('http://localhost:3001/api/dogs/'+ id);
         dispatch({
             type: GET_DOG_DETAILS,
-            payload: infoDog.data,
-        });
-    };
-};
+            payload: infoDetails.data,
 
+        })
+    }
+}
 // Filtrar por Temperamentos:
 export function filterByTemps(temp) {
     return {
@@ -85,11 +84,11 @@ export function filterByTemps(temp) {
     }
 };
 
-// Filtrar por Nombre_Raza:
-export function filterByBreeds(value) {
+// Filtrar por Nombre_RazaDB: >> Me trae los creados a través del form.
+export function filterByBreeds(payload) {
     return {
         type: FILTER_BREED,
-        payload: value,
+        payload
     };
 };
 

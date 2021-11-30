@@ -1,9 +1,8 @@
-const axios = require('axios');
 const { Raza, Temperamento } = require('../db');
+const axios = require('axios');
 const { API_KEY } = process.env;
 
-
-
+// Llamado y filtrado a la API:
 const getApiBreedsInfo = async () => {
 
         // const baseDeDatos = await Raza.findAll();  // >> encuentra lo que tenga en DB
@@ -22,70 +21,41 @@ const getApiBreedsInfo = async () => {
                 maxWeight: Number(dog.weight.metric.split("-")[1] || 0),
                 lifeSpan: dog.life_span,
                 breed_group: dog.breed_group,
-                temperament: dog.temperament?.includes(",")
-                    ? dog.temperament?.split(",").map((temp) => temp.trim())
-                    : dog.temperament?.split(),
-                created: false,
+                temperament: dog.temperament,
+                // temperament: dog.temperament?.includes(",")
+                //     ? dog.temperament?.split(",").map((temp) => temp.trim())
+                //     : dog.temperament?.split(),
+                // created: false,
             }
         });
-        // console.log("IMPRIME: ", breedInfo)
+        // console.log("IMPRIME: ", filteredInfo)
         return filteredInfo;
 }
 
+// Llamado a DB:
 const getDB_Breeds = async() => {
     return await Raza.findAll({
         include: {
             model: Temperamento,
-            attributes: ["name"],
+            attributes:['name'],
             through: {
-                attributes: [],
-            },
-        },
+                attributes:[]
+            }
+        }
     });
-};
+ };
 
+ // Junto API + DB:
 const getRazas = async () => {
     const razas_API = await getApiBreedsInfo();
     const razas_DB = await getDB_Breeds();
 
-    const mapeo_RazasDB = razas_DB.map((raza) => {
-        return {
-            id: raza.id,
-            name: raza.name,
-            image: raza.image,
-            origin: raza.origin,
-            minHeight: raza.minHeight,
-            maxHeight: raza.maxHeight,
-            minWeight: raza.minWeight,
-            maxWeight: raza.maxWeight,
-            lifeSpan: raza.lifeSpan,
-            breed_group: raza.breed_group,
-            created: true,
-            temperament: raza.temperament?.map((temp) => temp.name),
-        }
-    });
-
-    const razas_Total = razas_API.concat(mapeo_RazasDB);
-    return razas_Total;
-
+    const allBreeds = await razas_API.concat(razas_DB);
+    return allBreeds;
 };
 
-const getAllTemperaments = async () => {
-    const allBreeds = await getRazas();
-    allBreeds.forEach((br) => {
-        if(br.temperament) {
-            for(let i = 0; i < br.temperament.length; i++) {
-                Temperamento.findOrCreate({
-                  where: { name: br.temperament[i].trim() },
-                });
-            }
-        }        
-    });
-    return await Temperamento.findAll();
-}
-
-
 module.exports = {
+    getApiBreedsInfo,
+    getDB_Breeds,
     getRazas,
-    getAllTemperaments,
-}
+};
