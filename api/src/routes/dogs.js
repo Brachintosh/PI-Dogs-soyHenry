@@ -1,12 +1,11 @@
 require('dotenv').config();
 const { Router } = require("express");
 const router = Router();
-
-const { Raza, Temperamento } = require('../db');
-const {Op} = require('sequelize');
+const { Dog, Temperament } = require('../db');
+// const {Op} = require('sequelize');
 const  { getApiBreedsInfo,
-        getDB_Breeds,
-        getRazas,} = require('../controllers/controllerFunctions');
+         getDB_Breeds,
+         getRazas,} = require('../controllers/controllerFunctions');
 
 // Rutas a usar:
 router.get('/get', async (req, res, next) => {
@@ -27,9 +26,9 @@ router.get('/get', async (req, res, next) => {
             // Busco el nombre en la API
             const queryName = await apiInfo.filter(qN => qN.name.toLowerCase().includes(name.toLowerCase()));
             // Busco el nombre en mi DB:
-            const dbInfo = await Raza.findAll({
+            const dbInfo = await Dog.findAll({
                 include: {
-                    model: Temperamento,
+                    model: Temperament,
                     attribute:{
                         include: ['name']
                     } ,
@@ -51,7 +50,7 @@ router.get('/get', async (req, res, next) => {
 
 router.get('/:breedId', async(req, res, next) => {
     try {
-        const totalBreeds = await getRazas();
+        const totalBreeds = await getRazas();   // Trae DB + API
         // Busqueda por query params >>> Id:
         const breedId = req.params.breedId
 
