@@ -6,7 +6,7 @@ FILTER_BREED, ORDER_AZ/* ORDER_WEIGHT, ORDER_HEIGHT*/} from'../actions/index';
 let initialState = {
     todos: [],      // Mantengo a los pjs de la forma que vienen del back-end.
     perros: [], // ARREGLO DE PJS que renderizamos.
-    detalles: {},
+    details: {},
     temperamentos: [],
 
 }
@@ -54,7 +54,7 @@ export default function rootReducer(state = initialState, action) {
         case FILTER_BREED:
 
             const allBreeds = state.todos;
-            const statusFilteredBreed = action.payload === 'created' ? allBreeds.filter(el => el.created) : allBreeds.filter( el => !el.created)
+            const statusFilteredBreed = action.payload === 'createdInDb' ? allBreeds.filter(el => el.created) : allBreeds.filter( el => !el.createdInDb)
 
             return {
                 ...state,

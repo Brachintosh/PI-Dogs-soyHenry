@@ -70,7 +70,7 @@ export default function Home(){
                 <select onChange={e => handleFilterByBreeds(e)}>
                     <option value='All' >All Breeds</option>
                     <option value='temperament' >Existentes</option>
-                    <option value='created' >Creados</option>
+                    <option value='createdInDb' >Creados</option>
                 </select>
 
 
@@ -81,22 +81,23 @@ export default function Home(){
                 paginado = {paginado}
             />
 
+            <div className='container-cards'>
             {
              currentDogs?.map( el => {
                     return (
-                    <div >
                         <Link to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} >
                             <SingleCard key={el.id}
                             id={el.id} name={el.name} image={el.image}
                             temperament={el.temperament? el.temperament: el.temperament } 
-                            minWeight={el.minWeight}
-                            maxWeight={el.maxWeight}
+                            life_span={el.life_span}
+                            weight={el.weight}
+                            height={el.height}
                             />
                         </Link>
-                    </div>
                 );
-              })
+            })
             }
+        </div>
 
         </div>
     </div>

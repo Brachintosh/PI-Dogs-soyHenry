@@ -20,5 +20,3 @@ export default function Paginado({dogsPerPage, allDogs, paginado}){
         </div>
       );
 };
-
-//! a sele le faltaba el boton y no te acusa el css !

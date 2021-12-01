@@ -10,10 +10,10 @@ export const ORDER_WEIGHT = "ORDER_WEIGHT";
 export const ORDER_HEIGHT = "ORDER_HEIGHT";
 export const ORDER_AZ = "ORDER_AZ";
 
-const URL_GET = "http://localhost:3001/api/dogs/get/";
-const URL_GET_QUERY = "http://localhost:3001/api/dogs/get?name=";
-const URL_POST = "http://localhost:3001/api/dog/";
-const URL_TEMPERAMENT = "http://localhost:3001/api/temperament/get/";
+const URL_GET = "http://localhost:3001/api/dogs";
+const URL_GET_QUERY = "http://localhost:3001/api/dogs?name=";
+const URL_POST = "http://localhost:3001/api/dogs/create";
+const URL_TEMPERAMENT = "http://localhost:3001/api/temperaments";
 
 
 //! Definimos las funciones que van a despachar o recibir acciones:
@@ -28,7 +28,7 @@ export function obtainDogs() {
             type: GET_DOGS,
             payload: requestDogs.data,
         });
-        // console.log(requestDogs.data);
+        console.log(requestDogs.data);
     };
 };
 

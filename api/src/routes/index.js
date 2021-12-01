@@ -1,3 +1,5 @@
+//! MODULARIZAR LAS RUTAS PARA QUE QUEDEN LINDAS Y LLEVAR LAS FUNCTIONS AL CONTROLLER !!
+
 const { Router } = require('express');
 const axios = require('axios')
 const { Dog, Temperament}= require('../db')
@@ -110,6 +112,7 @@ router.get('/temperaments', async (req, res, next) => {
 router.get('/dogs', async (req, res)=>{
     const name = req.query.name
     let dogsTotal = await getAllDogs();
+    
     if(name){
         let dogsName =await dogsTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
         dogsName.length ?
@@ -120,139 +123,55 @@ router.get('/dogs', async (req, res)=>{
     }
 });
 
-router.get('/dogs/:id', async(req, res) =>{
-    const id = req.params.id;
-    const dogsTotal = await getAllDogs();
-    if(id){
-        let dogsId =await dogsTotal.filter(el => el.id === parseInt(id));
-        dogsId.length ?
-        res.status(200).json(dogsId):
-        res.status(404).send('No se encontró esa Raza')
-    }
-});
+router.get("/dogs/:breedId", async (req, res) => {
+    const breeds = await getAllDogs();
+    const breedId = req.params.breedId;
 
-// router.post('/dogs/create', async(req, res, next)=>{
-//     try {
-//         const {
-//             name,
-//             height,
-//             weight,
-//             life_span,
-//             image,
-//             createdInDb,
-//             temperament
-//         } = req.body;
+    let breed = breeds.filter((breed) => breed.id.toString() === breedId);
 
-//         let createdBreed = await Dog.create({
-//             name,
-//             height,
-//             weight,
-//             life_span,
-//             image,
-//             createdInDb
-//         });
-        
-//         // let tempDB = await Temperament.findAll({
-//         //     where:{name: temperament},
-//         //     include: [Dog]
-//         // });
-        
-//         // createdBreed.addTemperament(tempDB);
-        
-//         console.log(req.body);
-        
-        
-//         temperament?.map(async (el) => {
-//         const tempDB = await Temperament.findAll({
-//             where:{name: el},
-//             include: [Dog]
-//         });
-//         createdBreed.addTemperament(tempDB);
-//         });
-                
-//         res.json(createdBreed);
-//         } catch (error) {
-//             next(error);
-//         }
-//     });
-
-// no esta feo este... pero no anda...
-// router.post('/dogs/create', async (req, res, next) => {
-//     try{
-
-//         let {
-//             name,
-//             height,
-//             weight,
-//             life_span,
-//             image,
-//             createdInDb,
-//             temperament
-//         } = req.body;
-
-//         const createDog = await Dog.create({
-//             name,
-//             height,
-//             weight,
-//             life_span,
-//             image,
-//             createdInDb,
-//         });
-        
-//         temperament.map(async el => {
-//             const temperamentDB = await Temperament.findAll({
-//                 where: {
-//                     name : el
-//                 },
-//                 include: [Dog]
-//             })
-//             createDog.addTemperament(temperamentDB)
-//         });
-
-//         console.log(createDog);
-//         res.status(200).send(createDog);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
-
-
-// let temperaments = [];
-// let validTemperaments = [];
-
-router.post("/dogs/create", async (req, res, next) => {
-    try {
-      const { name, height, weight, life_span, image, temperament ,createdInDb } = req.body; // traer parametros de la tabla
-     
-      const newDog = await Dog.create({
-        //creamos un nuevo dog
-        name,
-        height,
-        weight,
-        life_span,
-        image,
-        createdInDb,
-        temperament
-       
-      });
-      //Me traigo los temperamentos de DB
-      const tempDb = await Temperament.findAll({
-        where: { //me devuelve el array de objetos con los temperamentos
-          name: {
-            [Op.in]: temperament
-          }
-        }
-      });
-      tempDb.map((el) => { //relacion con mi tabla intermedia
-        newDog.addTemperament(tempDb);
-      }) 
-      res.send(newDog);
-      console.log(req.body);
-      //reporta algun error
-    } catch (err) {
-      next(err);
-    }
+    if (breed.length > 0) return res.status(200).send(breed);
+    res.status(404).send("No breed matches that ID");
   });
+
+const createNewDog = async(req, res, next) => {
+
+    try {
+        
+        let {
+            name,
+            image,
+            height,
+            weight,
+            life_span,
+            temperament,
+            createdInDb
+        } = req.body;
+        console.log(name, height, weight, life_span, image, temperament ,createdInDb);
+
+        const newDogCreated = await Dog.create({
+            name,
+            image,
+            height,
+            weight,
+            life_span,
+            createdInDb
+        });
+
+        let tempDB = await Temperament.findAll({
+            where:{name: temperament},
+            include: [Dog]
+        });
+        newDogCreated.addTemperament(tempDB);
+
+        return res.json(newDogCreated);
+
+    } catch (error) {
+        next(error);
+    }
+
+};
+
+router.post('/dogs/create', createNewDog);
 
 module.exports = router;
 
