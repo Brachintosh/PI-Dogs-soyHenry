@@ -7,6 +7,7 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { obtainDogs, obtainTemperament, filterByBreeds } from "../../redux/actions";
 import SingleCard from '../Cards/SingleCards.jsx';
+import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado.jsx';
 // import FilterTemps from '../FilterTemps/FilterTemps';
 import './Home.css';
@@ -80,6 +81,10 @@ export default function Home(){
                 allDogs = {length}
                 paginado = {paginado}
             />
+            
+            <div>
+                <SearchBar/>
+            </div><br/><br/>
 
             <div className='container-cards'>
             {

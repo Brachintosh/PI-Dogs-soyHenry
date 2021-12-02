@@ -55,13 +55,16 @@ export function obtainTemperament() {
 
 // Buscar a un perro por QueryName:
 export function getByQueryName(name) {
-
     return async function (dispatch) {
-        const queryName = await axios.get(URL_GET_QUERY + name);
-        dispatch({
-            type: GET_BY_QUERY,
-            payload: queryName.data,
-        });
+        try {
+            const queryName = await axios.get(URL_GET_QUERY + name);
+            dispatch({
+                type: GET_BY_QUERY,
+                payload: queryName.data,
+            });
+        } catch (error) {
+            console.log(error);
+        };
     };
 };
 

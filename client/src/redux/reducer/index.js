@@ -32,7 +32,7 @@ export default function rootReducer(state = initialState, action) {
         case GET_DOG_DETAILS:
             return {
                 ...state,
-                detalles: action.payload,
+                details: action.payload,
             };
 
         case GET_BY_QUERY:
@@ -52,14 +52,11 @@ export default function rootReducer(state = initialState, action) {
         //     };
 
         case FILTER_BREED:
-
-            const allBreeds = state.todos;
-            const statusFilteredBreed = action.payload === 'createdInDb' ? allBreeds.filter(el => el.created) : allBreeds.filter( el => !el.createdInDb)
-
-            return {
-                ...state,
-                perros: action.payload === 'All' ? state.todos : statusFilteredBreed
-            };
+            const createdFilter = action.payload === 'createdInDb' ? state.todos.filter(e => e.createdInDb) : state.todos.filter(e => !e.createdInDb)
+            return{
+              ...state,
+              perros: action.payload === 'All' ? state.todos : createdFilter 
+             }
 
         // case ORDER_WEIGHT:
         //     return {
