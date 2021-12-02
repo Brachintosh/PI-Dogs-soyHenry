@@ -93,10 +93,11 @@ export default function Home(){
                         <Link to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} >
                             <SingleCard key={el.id}
                             id={el.id} name={el.name} image={el.image}
-                            temperament={el.temperament? el.temperament: el.temperament } 
+                            temperament={el.temperament? el.temperament: el.Temperaments } 
                             life_span={el.life_span}
                             weight={el.weight}
                             height={el.height}
+                            // origin={el.origin}
                             />
                         </Link>
                 );

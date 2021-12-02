@@ -28,7 +28,7 @@ export function obtainDogs() {
             type: GET_DOGS,
             payload: requestDogs.data,
         });
-        console.log(requestDogs.data);
+        // console.log(requestDogs.data);
     };
 };
 
@@ -36,6 +36,7 @@ export function obtainDogs() {
 export function createDog(payload) {
     return async function(dispatch) {
         const created_Dog = await axios.post(URL_POST, payload);
+        console.log(created_Dog); // Para ver lo que genera...
         return created_Dog;
     };
 };
@@ -71,12 +72,15 @@ export function getByQueryName(name) {
 // Buscar un perro por su ID:
 export function getDogDetails (id){
     return async function (dispatch){
-        const infoDetails = await axios.get('http://localhost:3001/api/dogs/'+ id);
+        const infoDetails = await axios.get(`http://localhost:3001/api/dogs/${id}`);
+        const llamado = await infoDetails.data;
+
         dispatch({
             type: GET_DOG_DETAILS,
-            payload: infoDetails.data,
-
+            payload: llamado
+            
         })
+        console.log("SOY INFO DE AXIOS", llamado)
     }
 }
 // Filtrar por Temperamentos:

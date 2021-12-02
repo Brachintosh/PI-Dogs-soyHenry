@@ -25,7 +25,6 @@ function App() {
           <Route exact path='/home' component={Home} />
           <Route path='/create_breed' component= {Create}/>
           <Route path='/home/:id' component= {Details}/>
-          {/* <Route path='/create' component={Form} /> */}
         </Switch>  
       </div>  
     </BrowserRouter>

@@ -8,7 +8,7 @@ import './detalle.css';
 export default function Details(props){
    
     const dispatch = useDispatch();
-    const details = useSelector((state) => state.details);
+    const details = useSelector((state) => state.perros);
     console.log('DETALLE', details)
     useEffect(() => {
         dispatch(getDogDetails(props.match.params.id))  
@@ -16,8 +16,8 @@ export default function Details(props){
 
     return (
         <div className='contenedorAll'>
-            <h1 className='h1details'>Detalle</h1>
-            <hr/>
+            <h1 className='h1details'><u>Dog Details:</u></h1>
+            <hr/><br/>
             {
                 details ?
                 
@@ -31,40 +31,32 @@ export default function Details(props){
                             <h1 className='tituloDetails'>{details.name? details.name : details[0].name}</h1>
                             <div className='pesoAltura'>
                                 <div className='detalle'>
-                                    <h4> Peso </h4>
-                                    { details.weight?
-                                    <p>{details.weight} kilos</p>
-                                    :<p>{details[0].weight_min} - {details[0].weight_max} kilos</p>
-                                    }
-                                
+                                    <h4> Weight: </h4>
+                                    <p>{details.height? details.height : details[0].height} kgs.</p>
                                 </div>   
                                 <div className='detalle'>
-                                    <h4> Altura </h4>
-                                    { details.height?
-                                    <p>{details.height} cm</p>
-                                    :<p>{details[0].height_min} - {details[0].height_max} cm</p>
-                                    }
-                                    
+                                    <h4> Height: </h4>
+                                    <p>{details.weight? details.weight : details[0].weight} cm.</p>
                                 </div>
                             </div> 
                             <div className="vidaOrigen">
                                 <div className='detalle'>
-                                    <h4> Años de vida </h4>
-                                    <p>{details.life_span? details.life_span : details[0].life_span}</p>
+                                    <h4> Life-Span: </h4>
+                                    <p>{details.life_span? details.life_span : details[0].life_span}.</p>
                                 </div> 
-                                <div className='detalle'>
+                                {/* <div className='detalle'>
                                     <h4> Origen </h4>
                                     <p>{details.origin? details.origin : details[0]?.origin}</p>
-                                </div> 
+                                </div>  */}
                             </div>
                             <div className='detalle'>
-                                <h4> Temperamento/s </h4>
+                                <h4> Temperament's: </h4>
                                 <p>{!details[0]?.createdInDb? details.temperament :  details[0].temperaments?.map(e => e.name).join(', ')}</p>
                             </div> 
                         </div>
-                    </div>
+                    </div><br/>
                     <Link to='/home' className='link'>
-                         <button className='botonDetails'>volver</button>
+                         <button className='botonDetails'> Go Home </button>
                     </Link>
                 </div>
                 :
