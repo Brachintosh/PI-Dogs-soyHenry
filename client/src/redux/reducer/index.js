@@ -75,18 +75,21 @@ export default function rootReducer(state = initialState, action) {
         //     };
 
         case ORDER_AZ:
-            return{
-            ...state,
-            perros: state.perros.sort((a,b) => {
+            let orderedDogs = [...state.perros]
+
+            let order =  orderedDogs.sort((a, b) => {
                 if(a.name < b.name) {
-                    return -1;
+                    return action.payload === 'asc' ? -1 : 1;
                 }
-                if(b.name < a.name) {
-                    return 1;
+                if(a.name > b.name) {
+                    return action.payload === 'desc' ? -1 : 1;
                 }
                 return 0;
             })
-        };
+            return {
+                ...state,
+                perros: order,
+            };
 
         default: return state;
     };

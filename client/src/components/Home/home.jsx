@@ -5,15 +5,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { obtainDogs, obtainTemperament, filterByBreeds } from "../../redux/actions";
+import { obtainDogs, obtainTemperament, filterByBreeds } from "../../redux/actions/index";
+import Order from '../OrderAZ/Order';
 import SingleCard from '../Cards/SingleCards.jsx';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado.jsx';
 // import FilterTemps from '../FilterTemps/FilterTemps';
 import './Home.css';
-
-
-//TODO: ver como meter el paginado en el home, armar la carta de cada perro con info basica,
 
 export default function Home(){
 
@@ -57,17 +55,17 @@ export default function Home(){
             <button onClick={e => {handleClick(e)}} >Reload</button>
         </div><br/>
         <div>
+                <div>
+                    <Order />
+                </div>
+                
 
-                <select>
-                    <option value='initial'>Alfabeticamente</option>
-                    <option value='asc' >Ascendente</option>
-                    <option value='desc' >Descendente</option>
-                </select>
                 <select>
                     <option value='initial' >Seleccione...</option>
                     <option value='weight' >Peso</option>
                     <option value='height' >Altura</option>
                 </select>
+
                 <select onChange={e => handleFilterByBreeds(e)}>
                     <option value='All' >All Breeds</option>
                     <option value='temperament' >Existentes</option>
@@ -96,7 +94,7 @@ export default function Home(){
                                 id={el.id}
                                 name={el.name}
                                 image={el.image? el.image : <img src="https://www.lookslikefilm.com/wp-content/uploads/2019/02/Michelle-Fernandes-Fox-www.wearefoxphotography.com_.jpg" alt="image of a puppy" /> } // pasarle una imgen default si no la provee [[ pero no anda el default... (?) ]]
-                                temperament={el.temperament? el.temperament: el.Temperaments } 
+                                temperament={el.temperament? el.temperament : el.Temperaments } 
                                 life_span={el.life_span}
                                 weight={el.weight}
                                 height={el.height}

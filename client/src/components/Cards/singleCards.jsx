@@ -12,7 +12,7 @@ export default function SingleCard({ id, name, image, temperament, weight, heigh
                 {/* <h5>Origin: {origin}</h5> */}
                 <h5>Weight: {weight} kgs</h5>
                 <h5>Height: {height}"</h5><br/>
-                <img className='dog-img' src={image} alt="Imagen not found !" widht="200px" height="250px" /><br/>
+                <img className='dog-img' src={image} alt="Image not found !" widht="200px" height="250px" /><br/>
             </div><br/>
         </div>
     );

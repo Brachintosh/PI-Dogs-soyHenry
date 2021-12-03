@@ -125,13 +125,20 @@ router.get('/dogs', async (req, res)=>{
 
 router.get("/dogs/:breedId", async (req, res) => {
     const breeds = await getAllDogs();
-    const breedId = req.params.breedId;
+    const id = req.params.breedId;
 
-    let breed = breeds.filter((breed) => breed.id.toString() === breedId);
+    if(id) {
+        let selected_Id = await breeds.filter((el) => el.id == id)
+        selected_Id.length ?
+            res.status(200).json(selected_Id) :
+            res.status(404).send('Dog ID not found.');
+        
+        // let breed = breeds.filter((breed) => breed.id.toString() === breedId);
+        // if (breed.length > 0) return res.status(200).send(breed);
+        // res.status(404).send("No breed matches that ID");
+    }
+});
 
-    if (breed.length > 0) return res.status(200).send(breed);
-    res.status(404).send("No breed matches that ID");
-  });
 
 const createNewDog = async(req, res, next) => {
 

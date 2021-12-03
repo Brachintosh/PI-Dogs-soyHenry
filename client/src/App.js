@@ -6,7 +6,8 @@ import { obtainDogs } from './redux/actions';
 import Landing from './components/Landing/Landing.jsx';
 import Home from './components/Home/Home.jsx';
 import Create from './components/Create/Create.jsx';
-import Details from './components/Details/Details.jsx';
+import DogDetails from './components/Details/DogDetails';
+
 
 function App() {
   
@@ -24,7 +25,7 @@ function App() {
           <Route exact path='/' component={Landing} />
           <Route exact path='/home' component={Home} />
           <Route path='/create_breed' component= {Create}/>
-          <Route path='/home/:id' component= {Details}/>
+          <Route path='/home/:id' component= {DogDetails}/>
         </Switch>  
       </div>  
     </BrowserRouter>

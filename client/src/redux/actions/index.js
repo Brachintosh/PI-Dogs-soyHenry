@@ -71,17 +71,22 @@ export function getByQueryName(name) {
 // Buscar un perro por su ID:
 export function getDogDetails (id){
     return async function (dispatch){
-        const infoDetails = await axios.get(`http://localhost:3001/api/dogs/${id}`);
-        const llamado = await infoDetails.data;
-
-        dispatch({
-            type: GET_DOG_DETAILS,
-            payload: llamado
-            
-        })
-        console.log("SOY INFO DE AXIOS", llamado)
+        try {
+            const infoDetails = await axios.get(`http://localhost:3001/api/dogs/${id}`);
+            const llamado = await infoDetails.data;
+    
+            return dispatch({
+                type: GET_DOG_DETAILS,
+                payload: llamado
+                
+            })
+            // console.log("SOY INFO DE AXIOS", llamado)
+        } catch (error) {
+            console.log(error);
+        }
     }
-}
+};
+
 // Filtrar por Temperamentos:
 export function filterByTemps(temp) {
     return {
