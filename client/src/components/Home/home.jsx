@@ -91,13 +91,16 @@ export default function Home(){
              currentDogs?.map( el => {
                     return (
                         <Link to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} >
-                            <SingleCard key={el.id}
-                            id={el.id} name={el.name} image={el.image}
-                            temperament={el.temperament? el.temperament: el.Temperaments } 
-                            life_span={el.life_span}
-                            weight={el.weight}
-                            height={el.height}
-                            // origin={el.origin}
+                            <SingleCard
+                                key={el.id}
+                                id={el.id}
+                                name={el.name}
+                                image={el.image? el.image : <img src="https://www.lookslikefilm.com/wp-content/uploads/2019/02/Michelle-Fernandes-Fox-www.wearefoxphotography.com_.jpg" alt="image of a puppy" /> } // pasarle una imgen default si no la provee [[ pero no anda el default... (?) ]]
+                                temperament={el.temperament? el.temperament: el.Temperaments } 
+                                life_span={el.life_span}
+                                weight={el.weight}
+                                height={el.height}
+                                // origin={el.origin}
                             />
                         </Link>
                 );

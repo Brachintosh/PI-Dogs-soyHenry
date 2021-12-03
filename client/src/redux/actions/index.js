@@ -46,7 +46,6 @@ export function obtainTemperament() {
 
     return async function(dispatch){
         const requestTemps = await axios.get(URL_TEMPERAMENT);
-        // console.log({"requestTemps": requestTemps});
         dispatch({
             type: GET_TEMPS,
             payload: requestTemps.data,
