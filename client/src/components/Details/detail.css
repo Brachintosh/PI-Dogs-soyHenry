@@ -1,3 +1,16 @@
+.details-container{
+  background: url(https://fondosmil.com/fondo/41802.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  filter:  sepia(0.25) opacity(0.90);
+  color: white;
+  text-shadow: 1.3px 1.7px rgb(10, 10, 10);
+}
+
 .dog-img{
     border-radius: 18px;
+    min-width: 350px;
+    min-height: 300px;
+    box-shadow: 2px 2px 2px rgba(238, 234, 234, 0.527);
 }

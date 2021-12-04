@@ -10,18 +10,21 @@
     border-radius: 4%;
     font-size: 16px;
     font-weight: 500;
-    /* backdrop-filter:blur(7.5px);  */
-    font-family: 'Quicksand', sans-serif;
     box-shadow: 5px 1px 10px rgba(68, 66, 66, 0.2);
-    height: 430px;
+    height: 550px;
     width: 390px;
     transition: all 250ms ease;
 }
 .single-card:hover{
     box-shadow: 8px 1px 12px rgba(148, 147, 147, 0.664);  
     transform: translateY(-2%);
-    
+    filter:contrast(1.5)
+    /* opacity: 0.8; */
 }
+
+body {
+    font-family: "Audiowide", sans-serif;
+  }
 
 .dog-img{
     border-radius: 12px;

@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {createDog, obtainTemperament } from "../../redux/actions/index";
+import './Create.css';
 
 // ! ARREGLAR EL EFECTO DEL BOTON QUE ELIMINA AL CLICKEARSE
 
@@ -95,14 +96,14 @@ export default function Create(){
     };
 
     return(
-
-        <div>
-            <div><br />
+        <div id="bg">   
+            
+            
                 <Link to="/home">
                     <button>Go Home</button>
                 </Link>
-            </div><br />
-            <h3>CREATE A BREED:</h3><br />
+            
+            <h3>CREATE A BREED:</h3><br /> 
             
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
@@ -196,15 +197,16 @@ export default function Create(){
                 <button type="submit">SUBMIT</button><br />
 
                 {input.temperament.map(el => 
-                    <div>
+                    <div onClick={() => handleDelete(el)}>
                         <div><p>x</p></div>
-                        <button onClick={() => handleDelete(el)}>{el}
+                        <button >{el}
                         </button>
                     </div>
                 )}
                     
             </form>
         </div>
+    
     )
 
 };

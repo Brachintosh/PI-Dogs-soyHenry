@@ -48,7 +48,7 @@ export default function Home(){
 
     return(
         
-    <div>
+    <div className='home-container'>
         <div>*/ este div puede ser un componente de navBar y cada ordenamiento tmb/* 
             <Link to='/create_breed' >Create Breed</Link>
             <h1>DogSite</h1><br/>
@@ -88,8 +88,9 @@ export default function Home(){
             {
              currentDogs?.map( el => {
                     return (
-                        <Link to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} >
+                        <Link className='card-style' to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} >
                             <SingleCard
+                            
                                 key={el.id}
                                 id={el.id}
                                 name={el.name}

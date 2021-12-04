@@ -1,3 +1,19 @@
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-image: url(https://www.lookslikefilm.com/wp-content/uploads/2019/02/Blakeney-Clouse-Custom-blakeneyc.com_.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.9;
+    text-shadow: 0.75px 0.995px rgb(248, 246, 246);
+}
+
+body {
+    font-family: "Audiowide", sans-serif;
+  }
+
 .container-cards{
     /* display:flex;
     flex-wrap: wrap; */    
@@ -6,4 +22,9 @@
     grid-column-gap: 50px;
     grid-row-gap: 25px;
     justify-content: center;
+    
+}
+
+.card-style{
+    backdrop-filter: blur(5.5px);
 }

@@ -22,13 +22,13 @@ export default function DogDetails() {
         }, []);
         console.log(dogDetail)
 
-    return <div>
+    return <div className='details-container'>
             <br/><h2><u>Details of the breed:</u></h2><br/>
         {
             dogDetail ?
-            <div>
+            <div className='card-detail'>
                 <h3>{dogDetail[0].name}</h3><br/>
-                <img className="dog-img" src={dogDetail[0].image} alt="Image of a puppy" height="250px" width="230px"/><br/>
+                <img className="dog-img" src={dogDetail[0].image} alt="Image of a puppy" height="250px" width="230px"/><br/><br/>
                 <h4>Weight:</h4>
                 <p>     {dogDetail[0].weight}kgs.   </p><br/>
                 <h4>Height:</h4>
@@ -36,7 +36,7 @@ export default function DogDetails() {
                 <h4>Life Span:</h4>
                 <p> {dogDetail[0].life_span}</p><br/>
                 <h4> Temperament's: </h4>
-                <p>{!dogDetail[0].createdInDb? dogDetail[0].temperament + " " : dogDetail[0].Temperaments?.map(el => el.name + (' ')) }</p><br/>
+                <p>{!dogDetail[0].createdInDb? dogDetail[0].temperament + ", " : dogDetail[0].Temperaments?.map(el => el.name + (', ')) }</p><br/>
             </div> :
 
             <div>Loading...</div>

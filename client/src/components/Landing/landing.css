@@ -11,7 +11,16 @@
     background-image: url(https://www.lookslikefilm.com/wp-content/uploads/2019/02/Michelle-Fernandes-Fox-www.wearefoxphotography.com_.jpg);
     background-attachment: fixed;
     background-size: cover;
+}
 
+body {
+    font-family: "Audiowide", sans-serif;
+  }
+
+h2 {
+    position:sticky;
+    color: rgb(46, 97, 209);
+    text-shadow: 1.5px 1.3px rgb(255, 255, 255);
 }
 
 .link-home { 
@@ -29,16 +38,18 @@
     text-align: center;
     text-decoration: none;
     font-size: 40px;
-    text-shadow: 0.9px 0.9px rgb(238, 225, 225);
-    transition: background-color font-size cursor text-shadow; /* usar "all"*/
+    font-family: "Audiowide", sans-serif;
+    text-shadow: 1.5px 1.3px rgb(238, 225, 225);
+    transition:  all;/* usaba >>background-color font-size cursor text-shadow >> "all"*/
     transition-duration: 0.7s;
 }
 
 .access-btn:hover { 
     background-color: #4caf4fd3;
     color: white;
-    font-size: 48px;
+    font-size: 50px;
     cursor: pointer;
     border-radius: 5px;
-    text-shadow: 0.9px 0.9px rgba(32, 32, 32, 0.795);
+    text-shadow: 2.5px 2.3px rgba(20, 20, 20, 0.692);
+    box-shadow: 8px 10px 12px rgba(0, 0, 0, 0.527);
 }
