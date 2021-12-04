@@ -34,7 +34,7 @@ export default function DogDetails() {
                 <h4>Height:</h4>
                 <p>     {dogDetail[0].height}"  </p><br/>
                 <h4>Life Span:</h4>
-                <p> {dogDetail[0].life_span}</p><br/>
+                <p> {dogDetail[0].life_span}.</p><br/>
                 <h4> Temperament's: </h4>
                 <p>{!dogDetail[0].createdInDb? dogDetail[0].temperament + ", " : dogDetail[0].Temperaments?.map(el => el.name + (', ')) }</p><br/>
             </div> :

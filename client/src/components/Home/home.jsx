@@ -49,9 +49,7 @@ export default function Home(){
     return(
         
     <div className='home-container'>
-        <div>*/ este div puede ser un componente de navBar y cada ordenamiento tmb/* 
-            <Link to='/create_breed' >Create Breed</Link>
-            <h1>DogSite</h1><br/>
+        <div>
             <button onClick={e => {handleClick(e)}} >Reload</button>
         </div><br/>
         <div>
