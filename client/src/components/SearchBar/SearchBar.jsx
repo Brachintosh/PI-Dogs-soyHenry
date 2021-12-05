@@ -19,8 +19,6 @@ function handleSubmit(e){
     dispatch(getByQueryName(name));
 };
     return(
-        <div>
-            <div  className='logotipo'></div>
         <form> 
                 <input  
                     className='input-search'
@@ -32,7 +30,6 @@ function handleSubmit(e){
                 className='btn' type="submit" onClick = {(e) => handleSubmit(e)}
                    >SEARCH</button>    
         </form>
-        </div>
     )
 
 };
