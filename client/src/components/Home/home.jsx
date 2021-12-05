@@ -68,19 +68,17 @@ export default function Home(){
                     <option value='All' >All Breeds</option>
                     <option value='temperament' >Existentes</option>
                     <option value='createdInDb' >Creados</option>
-                </select>
+                </select><br/><br/>
 
-
+                <div>
+                    <SearchBar/>
+                </div>
 
             <Paginado  
                 dogsPerPage = {dogsPerPage}
                 allDogs = {length}
                 paginado = {paginado}
-            />
-            
-            <div>
-                <SearchBar/>
-            </div><br/><br/>
+            />            
 
             <div className='container-cards'>
             {

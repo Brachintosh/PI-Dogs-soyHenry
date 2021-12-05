@@ -97,18 +97,17 @@ export default function Create(){
 
     return(
         <div id="bg">   
-            
-            
+            <div className='link-title'>
                 <Link to="/home">
-                    <button>Go Home</button>
+                    <button className='btn'>Go Home</button>
                 </Link>
-            
-            <h3>CREATE A BREED:</h3><br /> 
-            
+            </div><br/><br/>
+                <h3>CREATE A BREED:</h3><br /> 
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label>Name:    </label>
                     <input 
+                        className='input-form'
                         type="text"
                         placeholder="e.g. John"
                         value={input.name}
@@ -123,6 +122,7 @@ export default function Create(){
                 <div>
                     <label>Image:   </label>
                     <input
+                        className='input-form'
                         type="text"
                         placeholder="Image link..."
                         value={input.image}
@@ -134,6 +134,7 @@ export default function Create(){
                 <div>
                     <label>Weight:  </label>
                     <input 
+                        className='input-form'
                         type="text"
                         placeholder="e.g. 2 - 10 kgs"
                         value={input.weight}
@@ -148,6 +149,7 @@ export default function Create(){
                 <div>
                     <label>Height:  </label>
                     <input
+                        className='input-form'
                         type="text"
                         placeholder="e.g. 20 - 80 cms"
                         value={input.height}
@@ -162,6 +164,7 @@ export default function Create(){
                 <div>
                     <label>Life-Span:   </label>
                     <input
+                        className='input-form'
                         type="text"
                         placeholder="e.g. 8 - 10 years"
                         value={input.life_span}
@@ -184,7 +187,7 @@ export default function Create(){
 
                 <div>
                     <label>Temperaments:    </label>
-                    <select onChange={(e) => handleSelected(e)}>
+                    <select onChange={(e) => handleSelected(e)} className='input-form'>
                         {/* state.temperamentos.name >>> para acceder a la lista de temperament en DB */}
                         {temps?.map((t) => (
                             <option value={t.name}>{t.name}</option>
@@ -194,7 +197,7 @@ export default function Create(){
                         <p className='error'>{errors.temperament}</p>
                     )}
                 </div><br />
-                <button type="submit">SUBMIT</button><br />
+                <button className='btn' type="submit">SUBMIT</button><br />
 
                 {input.temperament.map(el => 
                     <div onClick={() => handleDelete(el)}>
