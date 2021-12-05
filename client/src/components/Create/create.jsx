@@ -44,6 +44,7 @@ export default function Create(){
     };
 
     function handleSelected(e) {
+        e.preventDefault();
         setInput({
             ...input,
             // Le paso lo que ya tiene en "...input.temperament" y despues lo que contiene en "e.target.value"
@@ -96,15 +97,13 @@ export default function Create(){
     };
 
     return(
-        <div id="bg">   
-            <div className='link-title'>
-                <Link to="/home">
-                    <button className='btn'>Go Home</button>
-                </Link>
-            </div><br/><br/>
-                <h3>CREATE A BREED:</h3><br /> 
+        <div className="bg">
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
+                <div><br />
+                    <Link to="/home">
+                        <button className='btn'>Go Home</button><br />
+                    </Link><br />
+                    <h3>CREATE A BREED:</h3><br /> 
                     <label>Name:    </label>
                     <input 
                         className='input-form'
@@ -197,8 +196,8 @@ export default function Create(){
                         <p className='error'>{errors.temperament}</p>
                     )}
                 </div><br />
-                <button className='btn' type="submit">SUBMIT</button><br />
-
+                <button className='btn' type="submit">SUBMIT</button><br /><br />
+                <br />
                 {input.temperament.map(el => 
                     <div onClick={() => handleDelete(el)}>
                         <div><p>x</p></div>

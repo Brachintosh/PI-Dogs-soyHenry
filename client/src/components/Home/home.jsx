@@ -33,14 +33,14 @@ export default function Home(){
     }
 
     useEffect(() => {           
-        // dispatch(obtainDogs()); // Despacho la accion invocando a la funcion. [[mapDispatchToProps]]
+        dispatch(obtainDogs()); // Despacho la accion invocando a la funcion. [[mapDispatchToProps]]
         dispatch(obtainTemperament());
     }, [dispatch]) // Lo que se incluye en el array es lo que depende el componente para funcionar.
 
-    function handleClick(e) { // Botón para recargar la pagina
-        e.preventDefault();
-        dispatch(obtainDogs());
-    }
+    // function handleClick(e) { // Botón para recargar la pagina
+    //     e.preventDefault();
+    //     dispatch(obtainDogs());
+    // }
 
     function handleFilterByBreeds(e){
         dispatch(filterByBreeds(e.target.value));
@@ -49,9 +49,11 @@ export default function Home(){
     return(
         
     <div className='home-container'>
-        <div>
+        
+        {/* <div> 
             <button onClick={e => {handleClick(e)}} >Reload</button>
-        </div><br/>
+        </div><br/> */}
+            
         <div>
                 <div>
                     <Order />

@@ -20,16 +20,19 @@ function handleSubmit(e){
 };
     return(
         <div>
-            <input  
-                className='input-form'
-                type="text"
-                placeholder="Search name..."
-                onChange = {(e) => handleInputChanges(e)}
-            />
-            <button className='btn' type="submit" onClick = {(e) => handleSubmit(e)}
-                >SEARCH</button>
+            <div  className='logotipo'></div>
+        <form> 
+                <input  
+                    className='input-search'
+                    type="text"
+                    placeholder="Search breed name..."
+                    onChange = {(e) => handleInputChanges(e)}
+                /> <button
+            
+                className='btn' type="submit" onClick = {(e) => handleSubmit(e)}
+                   >SEARCH</button>    
+        </form>
         </div>
-
     )
 
 };

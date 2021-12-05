@@ -1,19 +1,19 @@
 
-.input-form {
+.input-search {
     width: 50%;
     padding: 10px 16px;
-    margin: 8px 0;
+    margin: 8px 0 5px;
     box-sizing: border-box;
     border: 2px solid rgba(0, 128, 0, 0.363);
     border-radius: 6px;
     font-family: "Audiowide", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     text-shadow: 1.6px 1.95px rgba(241, 235, 235, 0.753);
-  }
-  
-  .input-form:focus{
-    background-color: rgba(109, 187, 212, 0.767);
-  }
+}
+
+.input-search:focus{
+  background-color: rgba(109, 186, 212, 0.616);
+}
 
 .btn {
     border: none;
@@ -30,12 +30,12 @@
     transition-duration: 0.7s;
   }
   
-  .btn:hover {
-    background-color: #4caf4fd3;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-shadow: 2.5px 2.3px rgba(20, 20, 20, 0.692);
-    box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.527);
-  }
+.btn:hover {
+  background-color: #4caf4fd3;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-shadow: 2.5px 2.3px rgba(20, 20, 20, 0.692);
+  box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.527);
+}

@@ -3,11 +3,11 @@
     padding: 0
 }
 
-#bg{
+.bg{
     display: flex;
     justify-content: center;
     align-content: center;
-    height:100vh;
+    height:100%;
     background-image: url(https://www.lookslikefilm.com/wp-content/uploads/2019/02/Joshua-Corey-www.jcb-photography.com_.jpg);
     background-attachment: fixed;
     background-size: cover;

@@ -37,12 +37,16 @@ export default function DogDetails() {
                 <p> {dogDetail[0].life_span}.</p><br/>
                 <h4> Temperament's: </h4>
                 <p>{!dogDetail[0].createdInDb? dogDetail[0].temperament + ", " : dogDetail[0].Temperaments?.map(el => el.name + (', ')) }</p><br/>
-            </div> :
+            </div> 
+            
+            :
 
-            <div>Loading...</div>
+            <div>
+                <div className="loading">Loading...</div>
+            </div>
         }
-        <Link to='/home'>
-            <button> Go Home </button><br/>
-        </Link>
+        <Link to='/home'><br />
+            <button className='btnm'> Go Home </button><br/><br /><br />
+        </Link><br /><br />
     </div>
 }
