@@ -1,6 +1,6 @@
 // Importar las acciones que van a ser utilizadas:
 import { GET_DOGS, GET_TEMPS, GET_BY_QUERY, GET_DOG_DETAILS, FILTER_TEMPS,
-FILTER_BREED, ORDER_AZ/* ORDER_WEIGHT, ORDER_HEIGHT*/} from'../actions/index';
+FILTER_BREED, ORDER_AZ, ORDER_WEIGHT/* , ORDER_HEIGHT*/} from'../actions/index';
 
 // ACTION >>> TYPE && PAYLOAD.
 let initialState = {
@@ -47,9 +47,21 @@ export default function rootReducer(state = initialState, action) {
             };
             
         // revisar...
+        case FILTER_TEMPS:
+            const statusFiltered = action.payload === null ? state.todos 
+            : state.todos.filter((e) => {
+                if (e.temperament && e.temperament?.includes(action.payload))return e;
+            })
+        
+            console.log(statusFiltered)
+            return{
+                ...state,
+                perros: statusFiltered
+            }
+        //!Estaba as:
         // case FILTER_TEMPS:
-        //     // const allTemps = state.temperamentos;
-        //     const statusFiltered = action.payload === 'Temperamentos' ? state.filtrados : state.filtrados?.filter(e => e.temperamentos?.includes(action.payload));
+        // const allTemps = state.temperamentos;
+        //     const statusFiltered = action.payload === 'Temperamentos' ? state.todos : state.todos?.filter(e => e.temperamentos?.includes(action.payload));
 
         //     return {
         //         ...state,
@@ -64,19 +76,45 @@ export default function rootReducer(state = initialState, action) {
               perros: action.payload === 'All' ? allBreeds : createdFilter 
              }
 
-        // case ORDER_WEIGHT:
-        //     return {
+        case ORDER_WEIGHT:
+            const ordenados = action.payload === 'min' ? 
+    
+            state.todos.sort(function(a,b){
+           
+            //  [{"weight":{"imperial":"6 - 13","metric":"3 - 6"}]
+    
+              if(Number(a.weight.metric ? a.weight.metric.split('-')[0] 
+              : a.weight.split('-')[0]) > Number(b.weight.metric ? b.weight.metric.split('-')[0] 
+              : b.weight.split('-')[0])) return 1;
+    
+    
+              if(Number(a.weight.metric ? a.weight.metric.split('-')[0] 
+              : a.weight.split('-')[0]) <  Number(b.weight.metric ? b.weight.metric.split('-')[0] 
+              : b.weight.split('-')[0])) return -1;
+              return 0;
+            })
+            :
+              state.todos.sort(function(a,b){
+            if(Number(a.weight.metric ? a.weight.metric.split('-')[0] 
+              : a.weight.split('-')[0]) < Number(b.weight.metric ? b.weight.metric.split('-')[0] 
+              : b.weight.split('-')[0])) return 1;
+    
+    
+              if(Number(a.weight.metric ? a.weight.metric.split('-')[0] 
+              : a.weight.split('-')[0]) >  Number(b.weight.metric ? b.weight.metric.split('-')[0] 
+              : b.weight.split('-')[0])) return -1;
+              return 0;
+                
+            });
 
-        //     };
-
-        // case ORDER_HEIGHT:
-        //     return{
-
-        //     };
-
+            return{
+                ...state,
+                perros: ordenados,
+               }
+    
         case ORDER_AZ:
             let orderedDogs = [...state.perros]
-
+            
             let order =  orderedDogs.sort((a, b) => {
                 if(a.name < b.name) {
                     return action.payload === 'asc' ? -1 : 1;
@@ -90,7 +128,12 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 perros: order,
             };
+            
+
+        // case ORDER_HEIGHT:
+        //     return{
+        //     };
 
         default: return state;
+        };
     };
-};

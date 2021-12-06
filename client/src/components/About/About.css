@@ -1,6 +1,7 @@
 
-.home-container {
+.about {
     display: flex;
+    height: 100vh;
     justify-content: center;
     align-content: center;
     background-image: url(https://c4.wallpaperflare.com/wallpaper/725/100/11/arboles-cielo-naturaleza-nubes-wallpaper-preview.jpg);

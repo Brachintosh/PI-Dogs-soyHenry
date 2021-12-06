@@ -6,9 +6,9 @@ export const GET_BY_QUERY = "GET_BY_QUERY";
 export const GET_DOG_DETAILS = "GET_DOG_DETAILS";
 export const FILTER_TEMPS = "FILTER_TEMPS";
 export const FILTER_BREED = "FILTER_BREED";
-export const ORDER_WEIGHT = "ORDER_WEIGHT";
-export const ORDER_HEIGHT = "ORDER_HEIGHT";
 export const ORDER_AZ = "ORDER_AZ";
+export const ORDER_WEIGHT = "ORDER_WEIGHT";
+// export const ORDER_HEIGHT = "ORDER_HEIGHT";
 
 const URL_GET = "http://localhost:3001/api/dogs";
 const URL_GET_QUERY = "http://localhost:3001/api/dogs?name=";
@@ -88,12 +88,27 @@ export function getDogDetails (id){
 };
 
 // Filtrar por Temperamentos:
+//!Estaba asi:
+// export function filterByTemps(name) {
+//     return async function (dispatch){
+//         let responseBack_end = await axios.get(`http://localhost:3001/api/order/temperaments?name=${name}`);
+//         dispatch({
+//             type: FILTER_TEMPS, 
+//             data: responseBack_end.data  
+//         });
+//         console.log("SOY RESPONSE BACKEND:  ", responseBack_end.data);
+//     }
+// };
+
+//----------------------------------------------------------------
+
 export function filterByTemps(temp) {
     return {
         type: FILTER_TEMPS,
         payload: temp,
     }
 };
+//----------------------------------------------------------------
 
 // Filtrar por Nombre_RazaDB: >> Me trae los creados a través del form.
 export function filterByBreeds(payload) {
@@ -103,18 +118,10 @@ export function filterByBreeds(payload) {
     };
 };
 
-// Orden por Altura:
+// Orden por Peso:
 export function orderBy_Weight(value) {
     return{
         type: ORDER_WEIGHT,
-        payload: value,
-    };
-};
-
-// Orden por Peso:
-export function orderBy_Height(value) {
-    return{
-        type: ORDER_HEIGHT,
         payload: value,
     };
 };
@@ -126,3 +133,12 @@ export function orderBy_AZ(value) {
         payload: value,
     }
 };
+
+// OPCIONAL:
+// Orden por Altura:
+// export function orderBy_Height(value) {
+//     return{
+//         type: ORDER_HEIGHT,
+//         payload: value,
+//     };
+// };

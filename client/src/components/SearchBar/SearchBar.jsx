@@ -17,6 +17,9 @@ function handleInputChanges(e){
 function handleSubmit(e){
     e.preventDefault();
     dispatch(getByQueryName(name));
+    setName({
+        name: " ",      // ARREGLAR LO DE QUE SE BORRE AL BUSCAR UN NOMBRE ...
+    });
 };
     return(
         <form> 
