@@ -23,6 +23,7 @@ export default function Home(){
     
     // Creo varios estados para usar en el paginado:
     const [currentPage, setCurrentPage] = useState(1);      // La pagina actual siempre va a ser la primera.
+    // eslint-disable-next-line
     const [dogsPerPage, setDogsPerPage] = useState(8);      // Cuantas cartas por pagina voy a renderizar.
     const indexOfLastDog = currentPage * dogsPerPage;        // Indice del último perrito de la pagina. [ 0 -7 ]
     const indexOfFirstDog = indexOfLastDog - dogsPerPage;    // Indice del primer perrito de la pagina.
@@ -52,7 +53,7 @@ export default function Home(){
                 <FilterTemps paginaLocal={setCurrentPage} />
             </div>
 
-            <SearchBar/>
+            <SearchBar paginaLocal={setCurrentPage} />
             <Paginado  
                 value={currentPage}
                 dogsPerPage = {dogsPerPage}
@@ -80,5 +81,5 @@ export default function Home(){
             </div>
         </div>
     </div>
-    )
+    );
 };

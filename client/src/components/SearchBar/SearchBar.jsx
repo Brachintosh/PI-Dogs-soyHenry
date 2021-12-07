@@ -4,7 +4,7 @@ import  { useDispatch } from "react-redux"
 import  { getByQueryName }from "../../redux/actions/index";
 import './search.css';
 
-export default function SearchBar() {
+export default function SearchBar({paginaLocal}) {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [errors, setErrors] = useState({});
@@ -19,10 +19,10 @@ function handleInputChanges(e){
     setName(e.target.value);
 };
 
-//!! NO FUNCIONA COMO
+//!! NO FUNCIONA COMO DEBERIA... :(
 function validation({name}){
     let errors = {};
-    if(!name) {
+    if(!name ? name : errors) {
         errors.name = "Must search a valid name."
     }
     return errors;
@@ -30,7 +30,8 @@ function validation({name}){
 
 function handleSubmit(e){
     e.preventDefault();
-    validation(name);
+    validation(!name);
+    paginaLocal(1);
     dispatch(getByQueryName(name));
     setName('');
 };
@@ -48,7 +49,7 @@ function handleSubmit(e){
                     )}
                 
                 <button
-                className='btn' type="submit" onClick = {handleSubmit}
+                    className='btn' type="submit" onClick = {handleSubmit}
                    >SEARCH</button>    
         </form>
     )

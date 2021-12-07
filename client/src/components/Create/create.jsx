@@ -100,10 +100,10 @@ export default function Create(){
     };
     // console.log(errors);
   
-    let error = [errors];
+    let errorT = [errors];
 
     function isDisabled(){
-        if(error.temperament.length === 0) {
+        if(errorT.temperament.length === 0) {
             return false;
         } else {
             return true;
@@ -225,7 +225,7 @@ export default function Create(){
 
                 <div>
                     <label>Temperaments:    </label>
-                    <select onChange={(e) => handleSelected(e)} className='input-form'>
+                    <select onChange={handleSelected} className='input-form'>
                         <option name='Temperamentos' key='keyT' > Select from... </option>
                         {/* state.temperamentos.name >>> para acceder a la lista de temperament en DB */}
                         {temps && temps.map((t) => (

@@ -11,10 +11,9 @@ export default function Paginado({dogsPerPage, allDogs, paginado, value}){
           <div className= "div-paginado">
             {pageNumbers && pageNumbers.map(number => (
               <div className= "btn-pag" key={number.toString()} >
-                <button className= {number === value? 'actual' : 'boton-paginado'} 
-                        onClick={() => paginado(number)}>
-                
-                  
+                <button 
+                    className= {number === value? 'actual' : 'boton-paginado'} 
+                    onClick={() => paginado(number)}>
                   {number}
                 </button>
               </div>

@@ -7,17 +7,17 @@ import { orderBy_Weight } from '../../redux/actions/index';
 export default function OrderByWeight({paginaLocal}) {
     const dispatch = useDispatch();
     
-    
     function handleSortWeight(e){
         e.preventDefault();
         paginaLocal(1); // Actualizo el filtro a la pagina inicial.
         dispatch(orderBy_Weight(e.target.value));
     };
 
-
     return( <div>
                 <p><u>Order By: </u></p>
-                <select  onChange={handleSortWeight} style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
+                <select 
+                    onChange={handleSortWeight}
+                    style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
                     <option value='initial' >Select from...</option>
                     <option value='min' > Min.Weight</option>
                     <option value='max' >Max.Weight</option>

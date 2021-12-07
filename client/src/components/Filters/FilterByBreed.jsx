@@ -20,7 +20,9 @@ export default function FilterByBreeds({paginaLocal}) {
 
     return ( <div>
                 <p><u>Filter from:</u></p>
-                <select onChange={handleFilterByBreeds} style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
+                <select
+                    onChange={handleFilterByBreeds}
+                    style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
                             <option value='All' >All Breeds</option>
                             <option value='temperament' >API Breeds</option>
                             <option value='createdInDb' >Created Breeds</option>
