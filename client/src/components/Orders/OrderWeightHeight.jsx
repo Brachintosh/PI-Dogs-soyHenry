@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { orderBy_Weight } from '../../redux/actions/index';
 
 //TODO: ARMAR EL ORDER EN EL BACK Y LLAMARLO EN UNA ACTION, LA ACTION SE ACTIVA VIA DISPATCH ACA...

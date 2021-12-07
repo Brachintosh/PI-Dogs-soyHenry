@@ -5,7 +5,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { obtainDogs, obtainTemperament, orderBy_Weight } from "../../redux/actions/index";
+import { obtainDogs, obtainTemperament } from "../../redux/actions/index";
 import OrderAZ from '../Orders/OrderAZ.jsx';
 import SingleCard from '../Cards/SingleCards.jsx';
 import SearchBar from '../SearchBar/SearchBar';
@@ -36,23 +36,14 @@ export default function Home(){
     }
 
     useEffect(() => {           
-        dispatch(obtainDogs()); // Despacho la accion invocando a la funcion. [[mapDispatchToProps]]
+        dispatch(obtainDogs());
         dispatch(obtainTemperament());
-    }, [dispatch]) // Lo que se incluye en el array es lo que depende el componente para funcionar.
-
-    // function handleClick(e) { // Botón para recargar la pagina
-    //     e.preventDefault();
-    //     dispatch(obtainDogs());
-    // }
+    }, [dispatch])
 
     return(
         
     <div className='home-container'>
-        
-        {/* <div> 
-            <button onClick={e => {handleClick(e)}} >Reload</button>
-        </div><br/> */}
-            
+    
         <div>
             <div className='order-filter'>
                 <OrderAZ paginaLocal={setCurrentPage}/>
@@ -60,7 +51,6 @@ export default function Home(){
                 <FilterByBreeds paginaLocal={setCurrentPage}/>
                 <FilterTemps paginaLocal={setCurrentPage}/>
             </div>
-
 
             <SearchBar/>
             <Paginado  
@@ -74,13 +64,13 @@ export default function Home(){
             {
                 currentDogs?.map( el => {
                     return (
-                        <Link className='card-style' to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} >
+                        <Link className='card-style' to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} key={el.id} >
                             <SingleCard
                             
                                 key={el.id}
                                 id={el.id}
                                 name={el.name}
-                                image={el.image? el.image : <img src="https://www.lookslikefilm.com/wp-content/uploads/2019/02/Michelle-Fernandes-Fox-www.wearefoxphotography.com_.jpg" alt="image of a puppy" /> } // pasarle una imgen default si no la provee [[ pero no anda el default... (?) ]]
+                                image={el.image? el.image : <img src="https://www.lookslikefilm.com/wp-content/uploads/2019/02/Michelle-Fernandes-Fox-www.wearefoxphotography.com_.jpg" alt="a puppy" /> } // pasarle una imgen default si no la provee [[ pero no anda el default... (?) ]]
                                 temperament={el.temperament? el.temperament : el.Temperaments } 
                                 weight={el.weight}
                             />

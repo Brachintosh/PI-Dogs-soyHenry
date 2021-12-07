@@ -50,7 +50,10 @@ export default function rootReducer(state = initialState, action) {
         case FILTER_TEMPS:
             const statusFiltered = action.payload === null ? state.perros 
             : state.perros.filter((e) => {
-                if (e.temperament && e.temperament?.includes(action.payload))return e;
+                if(e.temperament && e.temperament?.includes(action.payload)){
+                    return e;} else {
+                        return false;
+                    }
             })
             console.log(statusFiltered)
         
