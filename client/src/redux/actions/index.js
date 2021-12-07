@@ -88,27 +88,12 @@ export function getDogDetails (id){
 };
 
 // Filtrar por Temperamentos:
-//!Estaba asi:
-// export function filterByTemps(name) {
-//     return async function (dispatch){
-//         let responseBack_end = await axios.get(`http://localhost:3001/api/order/temperaments?name=${name}`);
-//         dispatch({
-//             type: FILTER_TEMPS, 
-//             data: responseBack_end.data  
-//         });
-//         console.log("SOY RESPONSE BACKEND:  ", responseBack_end.data);
-//     }
-// };
-
-//----------------------------------------------------------------
-
 export function filterByTemps(temp) {
     return {
         type: FILTER_TEMPS,
         payload: temp,
     }
 };
-//----------------------------------------------------------------
 
 // Filtrar por Nombre_RazaDB: >> Me trae los creados a través del form.
 export function filterByBreeds(payload) {

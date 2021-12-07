@@ -38,9 +38,7 @@ export default function Create(){
         setErrors(validation({
             ...input,
             [e.target.name] : e.target.value
-        }))
-
-        /*console.log(input); // Para poder controlar qué tiene el INPUT*/
+        }));
     };
 
     function handleSelected(e) {
@@ -57,6 +55,7 @@ export default function Create(){
         e.preventDefault();
         console.log(input)  // Controlo qué tiene el input antes de ser enviado...
         // Llamo a la function que conecta con el back-end y le mando lo recibido por "input"
+
         dispatch(createDog(input));
         // Para que el usuario vea que fue creado se envía un "alert"
         alert("Breed was created successfully");
@@ -83,22 +82,27 @@ export default function Create(){
             errors.weight = "No weight was specified..."
         } else if(!input.height) {
             errors.height = "No height was specified..."
-        } else if(!input.temperament) {
-            alert("Breed must have at least one Temperament.");
+        } else if(!input.life_span) {
+            errors.life_span = "No life span was specified..."
+        }
+        if(!input.image) {
+            errors.image = "Breed must have an Image."
         }
         return errors;
     };
 
-    function handleDelete(el) {
+    function handleDelete(e) {
+        console.log("SOY E", e);
+        e.preventDefault();
         setInput({
             ...input,
-            temperament: input.temperament.filter( temp => temp !== el)
+            temperament: input.temperament.filter( temp => temp !== e.target.value)
         })
     };
 
     return(
         <div className="bg">
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
                 <div><br />
                     <Link to="/home">
                         <button className='btn'>Go Home</button><br />
@@ -128,6 +132,9 @@ export default function Create(){
                         name="image"
                         onChange={(e) => handleOnChanges(e)}
                     />
+                    {errors.image && (
+                        <p className='error'>{errors.image}</p>
+                    )}
                 </div>
 
                 <div>
@@ -170,6 +177,9 @@ export default function Create(){
                         name="life_span"
                         onChange={(e) => handleOnChanges(e)}
                     />
+                    {errors.life_span && (
+                        <p className='error'>{errors.life_span}</p>
+                    )}
                 </div>
 
                 {/* <div>
@@ -192,20 +202,21 @@ export default function Create(){
                             <option value={t.name}>{t.name}</option>
                         ))}
                     </select>
-                    {errors.temperament && (
+                    {/* {errors.temperament && (
                         <p className='error'>{errors.temperament}</p>
-                    )}
+                    )} */}
                 </div><br />
-                <button className='btn' type="submit">SUBMIT</button><br /><br />
-                <br />
-                {input.temperament.map(el => 
-                    <div onClick={() => handleDelete(el)}>
-                        <div><p>x</p></div>
-                        <button >{el}
+                
+                <div  className='buttons'>
+                {input.temperament.map(e => (
+                    <div >
+                        <button onClick={handleDelete} className='btn-create' value={e} key={e.id}>{e}
                         </button>
                     </div>
-                )}
-                    
+                ))}
+                </div><br />    
+                <button className='btn' type="submit">SUBMIT</button><br /><br />
+                <br />
             </form>
         </div>
     

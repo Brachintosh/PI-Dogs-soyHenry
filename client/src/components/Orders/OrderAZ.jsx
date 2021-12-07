@@ -15,8 +15,8 @@ export default function OrderAZ() {
                 <p><u>Order By: </u></p>
                 <select name='select' onChange={e => onselectionchange(e)}>
                     <option value='initial'>Alphabetical </option>
-                    <option value='asc' >Ascending </option>
-                    <option value='desc' >Descending </option>
+                    <option value='asc' >A - Z </option>
+                    <option value='desc' >Z - A </option>
                 </select>
             </div>
     )

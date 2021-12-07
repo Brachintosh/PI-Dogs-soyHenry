@@ -45,10 +45,6 @@ export default function Home(){
     //     dispatch(obtainDogs());
     // }
 
-    // function handleFilterByBreeds(e){
-    //     dispatch(filterByBreeds(e.target.value));
-    // }
-
     return(
         
     <div className='home-container'>
@@ -59,15 +55,16 @@ export default function Home(){
             
         <div>
             <div className='order-filter'>
-                <OrderAZ />
-                <OrderByWeight />
-                <FilterByBreeds />
-                <FilterTemps />
+                <OrderAZ paginaLocal={setCurrentPage}/>
+                <OrderByWeight paginaLocal={setCurrentPage}/>
+                <FilterByBreeds paginaLocal={setCurrentPage}/>
+                <FilterTemps paginaLocal={setCurrentPage}/>
             </div>
 
 
             <SearchBar/>
             <Paginado  
+                value={currentPage}
                 dogsPerPage = {dogsPerPage}
                 allDogs = {length}
                 paginado = {paginado}

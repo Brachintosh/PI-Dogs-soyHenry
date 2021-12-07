@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import './detail.css';
 
 export default function DogDetails() {
@@ -27,8 +27,8 @@ export default function DogDetails() {
         {
             dogDetail ?
             <div className='card-detail'>
-                <h3>{dogDetail[0].name}</h3><br/>
-                <img className="dog-img" src={dogDetail[0].image} alt="Image of a puppy" height="250px" width="230px"/><br/><br/>
+                <h3 key={dogDetail[0].id}>{dogDetail[0].name}</h3><br/>
+                <img className="dog-img" src={dogDetail[0].image} alt="Look's like of a puppy" height="250px" width="230px"/><br/><br/>
                 <h4>Weight:</h4>
                 <p>     {dogDetail[0].weight}kgs.   </p><br/>
                 <h4>Height:</h4>
@@ -46,7 +46,7 @@ export default function DogDetails() {
             </div>
         }
         <Link to='/home'><br />
-            <button className='btnm'> Go Home </button><br/><br /><br />
+            <button className='btn'> Go Home </button><br/><br /><br />
         </Link><br /><br />
     </div>
 }

@@ -48,25 +48,16 @@ export default function rootReducer(state = initialState, action) {
             
         // revisar...
         case FILTER_TEMPS:
-            const statusFiltered = action.payload === null ? state.todos 
-            : state.todos.filter((e) => {
+            const statusFiltered = action.payload === null ? state.perros 
+            : state.perros.filter((e) => {
                 if (e.temperament && e.temperament?.includes(action.payload))return e;
             })
-        
             console.log(statusFiltered)
+        
             return{
                 ...state,
                 perros: statusFiltered
             }
-        //!Estaba as:
-        // case FILTER_TEMPS:
-        // const allTemps = state.temperamentos;
-        //     const statusFiltered = action.payload === 'Temperamentos' ? state.todos : state.todos?.filter(e => e.temperamentos?.includes(action.payload));
-
-        //     return {
-        //         ...state,
-        //         perros: statusFiltered,
-        //     };
 
         case FILTER_BREED:
             const allBreeds = state.todos; // DB + API
@@ -80,9 +71,6 @@ export default function rootReducer(state = initialState, action) {
             const ordenados = action.payload === 'min' ? 
     
             state.todos.sort(function(a,b){
-           
-            //  [{"weight":{"imperial":"6 - 13","metric":"3 - 6"}]
-    
               if(Number(a.weight.metric ? a.weight.metric.split('-')[0] 
               : a.weight.split('-')[0]) > Number(b.weight.metric ? b.weight.metric.split('-')[0] 
               : b.weight.split('-')[0])) return 1;
