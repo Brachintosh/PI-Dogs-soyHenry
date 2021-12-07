@@ -54,9 +54,7 @@ export default function rootReducer(state = initialState, action) {
                     return e;} else {
                         return false;
                     }
-            })
-            console.log(statusFiltered)
-        
+            });
             return{
                 ...state,
                 perros: statusFiltered

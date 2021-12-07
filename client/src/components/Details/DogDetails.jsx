@@ -10,7 +10,7 @@ export default function DogDetails() {
     let {id} = useParams();
 
     useEffect(()=> {
-        axios.get('http://localhost:3001/api/dogs/' + id)
+        axios.get(`http://localhost:3001/api/dogs/${id}`)
             .then((responseBack) => {
                 setdogDetail(responseBack.data)
             })
@@ -25,8 +25,8 @@ export default function DogDetails() {
             <br/><h2><u>Details of the breed:</u></h2><br/>
         {
             dogDetail ?
-            <div className='card-detail'>
-                <h2 key={dogDetail[0].id} style={{color:"black"}} ><u>{dogDetail[0].name}</u></h2>
+            <div key={dogDetail[0].id} className='card-detail'>
+                <h2  style={{color:"black"}} ><u>{dogDetail[0].name}</u></h2>
                 <img className="dog-img" src={dogDetail[0].image} alt="Look's like of a puppy" height="250px" width="230px"/><br/><br/>
                 <h4>Weight:</h4>
                 <p>     {dogDetail[0].weight}kgs.   </p><br/>

@@ -19,7 +19,7 @@ export default function FilterTemps() {
             <p><u>Filter from:</u></p>
             <select onChange={(e)=>{onInputChange(e)}} style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
                
-                <option name='Temperamentos' key='keyT'> Temperaments </option>
+                <option name='Temperaments' key='keyT'> Temperaments </option>
 
                 {allTemps && allTemps.map((e) => (
                     <option key={e.id} value={e.name} >{e.name}</option>

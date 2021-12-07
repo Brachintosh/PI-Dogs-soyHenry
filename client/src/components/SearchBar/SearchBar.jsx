@@ -16,13 +16,13 @@ function handleInputChanges(e){
         ...name,
         [e.target.name] : e.target.value
     }));
-
     setName(e.target.value);
 };
+
 //!! NO FUNCIONA COMO
-function validation(name){
+function validation({name}){
     let errors = {};
-    if(!name.name) {
+    if(!name) {
         errors.name = "Must search a valid name."
     }
     return errors;

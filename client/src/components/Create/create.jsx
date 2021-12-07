@@ -54,8 +54,13 @@ export default function Create(){
     function handleSubmit(e) {
         e.preventDefault();
         console.log(input)  // Controlo qué tiene el input antes de ser enviado...
+        if(input.name &&
+        input.image &&
+        input.height &&
+        input.weight &&
+        input.life_span &&
+        input.temperament){
         // Llamo a la function que conecta con el back-end y le mando lo recibido por "input"
-
         dispatch(createDog(input));
         // Para que el usuario vea que fue creado se envía un "alert"
         alert("Breed was created successfully");
@@ -68,31 +73,45 @@ export default function Create(){
             life_span: "",
             temperament: [],
         });
-        // Al terminar, re-dirigo al Home. >>> useHistory()
-        history.push('/home');
+        history.push('/home/');
 
-    };
+      } else(alert('Must feel all the inputs.'));
+    }
 
-    function validation(input) {
+    function validation(input){
+        var validIMG = /^(ftp|http|https):\/\/[^ "]+$/.test(input.image);
+        // var validNUMS = /^[1-9]\d*$/.test(input);
         let errors = {};
 
-        if(!input.name) {
-            errors.name = "Breed must have a name."
-        } else if(!input.weight) {
-            errors.weight = "No weight was specified..."
-        } else if(!input.height) {
-            errors.height = "No height was specified..."
-        } else if(!input.life_span) {
-            errors.life_span = "No life span was specified..."
-        }
-        if(!input.image) {
-            errors.image = "Breed must have an Image."
+        if (!input.name) {
+        errors.name='All Breeds must have a name.'
+        }else if(!input.image || !validIMG){
+        errors.image = 'Must have a valid link image.'
+        }else if(!input.weight /*|| !validNUMS*/){
+        errors.weight = 'No weight was specified...'
+        }else if(!input.height /*|| !validNUMS*/){
+        errors.height = 'No height was specified...'
+        }else if(!input.life_span /*|| !validNUMS*/){
+        errors.life_span = 'No life span was specified...'
+        }else if(!input.temperament.length >= 1){
+        errors.temperament = 'Must choose at least one temperament.'
         }
         return errors;
     };
+    // console.log(errors);
+  
+    let error = [errors];
+
+    function isDisabled(){
+        if(error.temperament.length === 0) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+
 
     function handleDelete(e) {
-        console.log("SOY E", e);
         e.preventDefault();
         setInput({
             ...input,
@@ -100,8 +119,13 @@ export default function Create(){
         })
     };
 
+    let id = 0
+    function addKey(){
+        return id++
+    }
+
     return(
-        <div className="bg">
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <div key='f1'><br />
                     <Link to="/home">
@@ -110,13 +134,13 @@ export default function Create(){
                     <h3>CREATE A BREED:</h3><br /> 
                     <label>Name:    </label>
                     <input 
-                        key={input.name}
+
                         className='input-form'
                         type="text"
                         placeholder="e.g. John"
                         value={input.name}
                         name="name"
-                        onChange={(e) => handleOnChanges(e)}
+                        onChange={handleOnChanges}
                     />
                     {errors.name && (
                         <p className='error'>{errors.name}</p>
@@ -126,13 +150,13 @@ export default function Create(){
                 <div>
                     <label>Image:   </label>
                     <input
-                        key={input.image}
+
                         className='input-form'
                         type="text"
                         placeholder="Image link..."
                         value={input.image}
                         name="image"
-                        onChange={(e) => handleOnChanges(e)}
+                        onChange={handleOnChanges}
                     />
                     {errors.image && (
                         <p className='error'>{errors.image}</p>
@@ -142,13 +166,13 @@ export default function Create(){
                 <div>
                     <label>Weight:  </label>
                     <input 
-                        key={input.weight}
+
                         className='input-form'
                         type="text"
                         placeholder="e.g. 2 - 10 kgs"
                         value={input.weight}
                         name="weight"
-                        onChange={(e) => handleOnChanges(e)}
+                        onChange={handleOnChanges}
                     />
                     {errors.weight && (
                         <p className='error'>{errors.weight}</p>
@@ -158,13 +182,13 @@ export default function Create(){
                 <div>
                     <label>Height:  </label>
                     <input
-                        key={input.height}
+
                         className='input-form'
                         type="text"
                         placeholder="e.g. 20 - 80 cms"
                         value={input.height}
                         name="height"
-                        onChange={(e) => handleOnChanges(e)}
+                        onChange={handleOnChanges}
                     />
                     {errors.height && (
                         <p className='error'>{errors.height}</p>
@@ -174,13 +198,13 @@ export default function Create(){
                 <div>
                     <label>Life-Span:   </label>
                     <input
-                        key={input.life_span}
+
                         className='input-form'
                         type="text"
                         placeholder="e.g. 8 - 10 years"
                         value={input.life_span}
                         name="life_span"
-                        onChange={(e) => handleOnChanges(e)}
+                        onChange={handleOnChanges}
                     />
                     {errors.life_span && (
                         <p className='error'>{errors.life_span}</p>
@@ -202,25 +226,32 @@ export default function Create(){
                 <div>
                     <label>Temperaments:    </label>
                     <select onChange={(e) => handleSelected(e)} className='input-form'>
+                        <option name='Temperamentos' key='keyT' > Select from... </option>
                         {/* state.temperamentos.name >>> para acceder a la lista de temperament en DB */}
-                        {temps?.map((t) => (
-                            <option key={t.name} value={t.name}>{t.name}</option>
+                        {temps && temps.map((t) => (
+                            <option key={t.id} value={t.name}>{t.name}</option>
                         ))}
                     </select>
-                    {/* {errors.temperament && (
+                    {errors.temperament && (
                         <p className='error'>{errors.temperament}</p>
-                    )} */}
+                    )}
                 </div><br />
                 
                 <div  className='buttons'>
                 {input.temperament.map(e => (
-                    <div  key={input.temperament.name}>
+                    <div  key={addKey()}>
                         <button onClick={handleDelete} className='btn-create' value={e}>{e}
                         </button>
                     </div>
                 ))}
                 </div><br />    
-                <button className='btn' type="submit">SUBMIT</button><br /><br />
+                <button
+                    className='btn'
+                    value='createDog'
+                    type="submit"
+                    disabled={isDisabled}
+                    id='button-submit'
+                    >SUBMIT</button><br /><br />
                 <br />
             </form>
         </div>
