@@ -20,7 +20,6 @@ export default function DogDetails() {
             }
 
         }, []);
-        console.log(dogDetail)
 
     return <div className='details-container'>
             <br/><h2><u>Details of the breed:</u></h2><br/>

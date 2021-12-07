@@ -103,7 +103,7 @@ export default function Create(){
     return(
         <div className="bg">
             <form onSubmit={handleSubmit}>
-                <div><br />
+                <div key='f1'><br />
                     <Link to="/home">
                         <button className='btn'>Go Home</button><br />
                     </Link><br />
@@ -214,8 +214,8 @@ export default function Create(){
                 
                 <div  className='buttons'>
                 {input.temperament.map(e => (
-                    <div >
-                        <button onClick={handleDelete} className='btn-create' value={e} key={e.id}>{e}
+                    <div  key={input.temperament.name}>
+                        <button onClick={handleDelete} className='btn-create' value={e}>{e}
                         </button>
                     </div>
                 ))}
