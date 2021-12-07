@@ -27,7 +27,7 @@ export default function DogDetails() {
         {
             dogDetail ?
             <div className='card-detail'>
-                <h3 key={dogDetail[0].id}>{dogDetail[0].name}</h3><br/>
+                <h2 key={dogDetail[0].id} style={{color:"black"}} ><u>{dogDetail[0].name}</u></h2>
                 <img className="dog-img" src={dogDetail[0].image} alt="Look's like of a puppy" height="250px" width="230px"/><br/><br/>
                 <h4>Weight:</h4>
                 <p>     {dogDetail[0].weight}kgs.   </p><br/>

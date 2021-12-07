@@ -6,19 +6,23 @@
   filter:  sepia(0.25) opacity(0.90);
   color: white;
   text-shadow: 1.3px 1.7px rgb(10, 10, 10);
+  letter-spacing: 1.95px;
 }
 
 .dog-img{
-    border-radius: 18px;
+    border-radius: 20px;
     min-width: 350px;
     min-height: 300px;
-    box-shadow: 2px 2px 2px rgba(238, 234, 234, 0.527);
+    box-shadow: 3.9px 3.2px 3.2px rgba(238, 234, 234, 0.664);
 }
 
 .loading{
   background: url(https://fondosmil.com/fondo/41802.jpg) no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
+  letter-spacing: 1.75px;
+  font-size: 52px;
+  text-shadow: 5.5px 5.3px rgba(20, 20, 20, 0.842);
 }
 
 .btn {
@@ -30,6 +34,7 @@
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  letter-spacing: 1.75px;
   font-family: "Audiowide", sans-serif;
   text-shadow: 1.5px 1.3px rgb(238, 225, 225);
   transition:  all;/* usaba >>background-color font-size cursor text-shadow >> "all"*/

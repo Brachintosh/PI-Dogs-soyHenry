@@ -17,7 +17,7 @@ export default function OrderByWeight({paginaLocal}) {
 
     return( <div>
                 <p><u>Order By: </u></p>
-                <select  onChange={handleSortWeight} >
+                <select  onChange={handleSortWeight} style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
                     <option value='initial' >Select from...</option>
                     <option value='min' > Min.Weight</option>
                     <option value='max' >Max.Weight</option>

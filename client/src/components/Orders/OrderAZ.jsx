@@ -13,7 +13,7 @@ export default function OrderAZ() {
 
     return(<div>
                 <p><u>Order By: </u></p>
-                <select name='select' onChange={e => onselectionchange(e)}>
+                <select name='select' onChange={e => onselectionchange(e)} style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
                     <option value='initial'>Alphabetical </option>
                     <option value='asc' >A - Z </option>
                     <option value='desc' >Z - A </option>

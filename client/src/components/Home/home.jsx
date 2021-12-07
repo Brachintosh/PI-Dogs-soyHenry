@@ -46,10 +46,10 @@ export default function Home(){
     
         <div>
             <div className='order-filter'>
-                <OrderAZ paginaLocal={setCurrentPage}/>
-                <OrderByWeight paginaLocal={setCurrentPage}/>
-                <FilterByBreeds paginaLocal={setCurrentPage}/>
-                <FilterTemps paginaLocal={setCurrentPage}/>
+                <OrderAZ paginaLocal={setCurrentPage} />
+                <OrderByWeight paginaLocal={setCurrentPage} />
+                <FilterByBreeds paginaLocal={setCurrentPage} />
+                <FilterTemps paginaLocal={setCurrentPage} />
             </div>
 
             <SearchBar/>
@@ -64,9 +64,8 @@ export default function Home(){
             {
                 currentDogs?.map( el => {
                     return (
-                        <Link className='card-style' to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} key={el.id} >
+                        <Link to={'/home/'+ el.id} style={{textDecoration: "none", color:"black"}} key={el.id} >
                             <SingleCard
-                            
                                 key={el.id}
                                 id={el.id}
                                 name={el.name}

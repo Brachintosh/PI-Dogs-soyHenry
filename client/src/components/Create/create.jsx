@@ -110,6 +110,7 @@ export default function Create(){
                     <h3>CREATE A BREED:</h3><br /> 
                     <label>Name:    </label>
                     <input 
+                        key={input.name}
                         className='input-form'
                         type="text"
                         placeholder="e.g. John"
@@ -125,6 +126,7 @@ export default function Create(){
                 <div>
                     <label>Image:   </label>
                     <input
+                        key={input.image}
                         className='input-form'
                         type="text"
                         placeholder="Image link..."
@@ -140,6 +142,7 @@ export default function Create(){
                 <div>
                     <label>Weight:  </label>
                     <input 
+                        key={input.weight}
                         className='input-form'
                         type="text"
                         placeholder="e.g. 2 - 10 kgs"
@@ -155,6 +158,7 @@ export default function Create(){
                 <div>
                     <label>Height:  </label>
                     <input
+                        key={input.height}
                         className='input-form'
                         type="text"
                         placeholder="e.g. 20 - 80 cms"
@@ -170,6 +174,7 @@ export default function Create(){
                 <div>
                     <label>Life-Span:   </label>
                     <input
+                        key={input.life_span}
                         className='input-form'
                         type="text"
                         placeholder="e.g. 8 - 10 years"
@@ -199,7 +204,7 @@ export default function Create(){
                     <select onChange={(e) => handleSelected(e)} className='input-form'>
                         {/* state.temperamentos.name >>> para acceder a la lista de temperament en DB */}
                         {temps?.map((t) => (
-                            <option value={t.name}>{t.name}</option>
+                            <option key={t.name} value={t.name}>{t.name}</option>
                         ))}
                     </select>
                     {/* {errors.temperament && (

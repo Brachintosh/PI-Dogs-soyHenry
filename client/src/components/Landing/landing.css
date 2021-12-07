@@ -15,13 +15,14 @@
 
 body {
     font-family: "Audiowide", sans-serif;
+    letter-spacing: 0.8px;
   }
 
 h2 {
     position:sticky;
     color:  #009bcfdc;
     text-shadow: 1.5px 1.3px rgb(255, 255, 255);
-    letter-spacing: 1.5px;
+    letter-spacing: 2.1px;
 }
 
 .link-home { 
@@ -38,6 +39,7 @@ h2 {
     padding: 8px 20px;
     text-align: center;
     text-decoration: none;
+    letter-spacing: 1.75px;
     font-size: 40px;
     font-family: "Audiowide", sans-serif;
     text-shadow: 1.5px 1.3px rgb(238, 225, 225);

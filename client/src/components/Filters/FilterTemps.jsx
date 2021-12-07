@@ -17,7 +17,7 @@ export default function FilterTemps() {
     return (
         <div>
             <p><u>Filter from:</u></p>
-            <select onChange={(e)=>{onInputChange(e)}}>
+            <select onChange={(e)=>{onInputChange(e)}} style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
                
                 <option name='Temperamentos' key='keyT'> Temperaments </option>
 
