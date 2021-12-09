@@ -116,7 +116,7 @@ router.get('/dogs', async (req, res)=>{
     if(name){
         let dogsName =await dogsTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
         dogsName.length ?
-        res.status(200).send(dogsName):
+        res.status(200).send(dogsName) :
         res.status(404).send('No se encontró la Raza');
     }else{
         res.status(200).send(dogsTotal);
@@ -179,40 +179,6 @@ const createNewDog = async(req, res, next) => {
 };
 
 router.post('/dogs/create', createNewDog);
-
-//GUIA PARA RUTA:
-// !NO ANDA
-router.get("/order/temperaments", async (req, res, next) => { // find actividad x nombre y paises
-    let { name } = req.query
-
-    if (name) {
-        try {
-            let foundTemps = await Temperament.findAll({
-
-                where: { name: name },
-                include: Dog
-            });
-
-            foundTemps
-                ? res.json(foundTemps)
-                : res.send('Temperament not found...')
-        } catch (error) {
-            res.status(404)
-            next(error)
-        }
-    } else {
-        try {
-            let AllTemps = await Temperament.findAll({
-                include: Dog
-            })
-            AllTemps ?
-                res.json(AllTemps)
-                : res.send('No data...')
-        } catch (error) {
-            next(error)
-        }
-    }
-})
 
 module.exports = router;
 

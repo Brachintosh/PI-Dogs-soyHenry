@@ -24,7 +24,7 @@ body {
 }
 
 .order-filter{
-    border: solid rgba(255, 0, 0, 0.651) 2.1px;
+    border: solid rgba(224, 104, 49, 0.719) 2.1px;
     border-radius: 12px;
     background-color: rgba(245, 245, 220, 0.603);
     margin: 1.75%;
@@ -33,4 +33,20 @@ body {
     justify-content: center;
     padding: 15px 30px 5px 30px;
     letter-spacing: 1.15px;
+}
+
+.sort-az{
+    padding: 0px 50px;
+}
+
+.order-weight{
+    padding: 0px 50px;
+}
+
+.filter-breed{
+    padding: 0px 50px;
+}
+
+.filter-temp{
+    padding: 0px 50px;
 }

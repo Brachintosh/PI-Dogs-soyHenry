@@ -47,10 +47,18 @@ export default function Home(){
     
         <div>
             <div className='order-filter'>
-                <OrderAZ paginaLocal={setCurrentPage} />
-                <OrderByWeight paginaLocal={setCurrentPage} />
-                <FilterByBreeds paginaLocal={setCurrentPage} />
-                <FilterTemps paginaLocal={setCurrentPage} />
+                <div className='sort-az'>
+                    <OrderAZ paginaLocal={setCurrentPage} />
+                </div>
+                <div className='order-weight'>
+                    <OrderByWeight paginaLocal={setCurrentPage} />
+                </div>
+                <div className='filter-breed'>
+                    <FilterByBreeds paginaLocal={setCurrentPage} />
+                </div>
+                <div className='filter-temp'>
+                    <FilterTemps paginaLocal={setCurrentPage} />
+                </div>
             </div>
 
             <SearchBar paginaLocal={setCurrentPage} />

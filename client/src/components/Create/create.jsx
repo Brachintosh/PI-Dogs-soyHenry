@@ -93,7 +93,7 @@ export default function Create(){
         errors.height = 'No height was specified...'
         }else if(!input.life_span /*|| !validNUMS*/){
         errors.life_span = 'No life span was specified...'
-        }else if(!input.temperament.length >= 1){
+        }else if(!input.temperament){
         errors.temperament = 'Must choose at least one temperament.'
         }
         return errors;
@@ -249,7 +249,7 @@ export default function Create(){
                     className='btn'
                     value='createDog'
                     type="submit"
-                    disabled={isDisabled}
+                    // disabled={isDisabled}
                     id='button-submit'
                     >SUBMIT</button><br /><br />
                 <br />

@@ -2,7 +2,7 @@ import React from "react";
 import './SingleCard.css';
 
 // Por props recibe nombre, imagen y demas...
-export default function SingleCard({ id, name, image, temperament, weight, height, life_span,/*origin*/ }) {
+export default function SingleCard({ id, name, image, temperament, weight /*, height, life_span,origin*/ }) {
     return (
         <div key={id}>
             <div className='single-card' ><br/>
