@@ -18,8 +18,8 @@ export default function DogDetails() {
             return() => {
                 setdogDetail(null)  // CleanUp
             }
-// eslint-disable-next-line
-        }, []);
+
+        }, [id]);
 
     return  <div className='details-container'>
         {

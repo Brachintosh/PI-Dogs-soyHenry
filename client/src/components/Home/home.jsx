@@ -46,7 +46,7 @@ export default function Home(){
     <div className='home-container'>
     
         <div>
-            <div className='order-filter'>
+            <div className='order-filter' style={{ color:"black"}}>
                 <div className='sort-az'>
                     <OrderAZ paginaLocal={setCurrentPage} />
                 </div>

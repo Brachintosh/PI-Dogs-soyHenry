@@ -15,6 +15,17 @@ export default function FilterTemps({paginaLocal}) {
         dispatch(filterByTemps(e.target.value))
     }
 
+// ​    ​function​ ​handleSelect​(​el​)​ ​{ 
+// ​        ​if​ ​(​input​.​temperament​.​includes​(​(​el​.​target​.​value​)​)​)​ ​{ 
+// ​            ​alert​(​"Temperament already selected. Try again :)"​)​ 
+// ​        ​}​ ​else​ ​{ 
+// ​            ​setInput​(​{ 
+// ​                ...​input​, 
+// ​                ​temperament​:​[​...​input​.​temperament​,​ ​el​.​target​.​value​] 
+// ​            ​}​) 
+// ​        ​} 
+// ​    ​};
+
     return (
         <div>
             <p><u>Filter from:</u></p>
@@ -30,5 +41,32 @@ export default function FilterTemps({paginaLocal}) {
 
             </select>
         </div>
-    );
+    )
 };
+
+//     function handleChange(el) {
+//         setSelectTemp(el.target.value)
+//     }
+
+//     return (
+//         <div className={styles.card}>
+//         <form onSubmit={handleSubmit}>
+//             <label className={styles.labelTemp}>Temperament!!</label>   
+//             <br/>  
+//             <select 
+//                 onChange={handleChange}
+//                 name='By Temperaments'
+//                 style={{fontFamily: "Audiowide, sans-serif", letterSpacing: "1.1px"}} >
+
+//                 <option value="all" >Temperaments:</option>
+//                 {
+//                     allTemps?.map((temp) => {
+//                         return <option value={temp.name}>{temp.name}</option>
+//                     })
+//                 }
+//             </select>
+//             <button type='submit' className={styles.button}>Filter</button>
+//         </form>
+//     </div>
+//     );
+// };
