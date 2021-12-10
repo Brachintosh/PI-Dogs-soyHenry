@@ -36,7 +36,7 @@ export function obtainDogs() {
 export function createDog(payload) {
     return async function(dispatch) {
         const created_Dog = await axios.post(URL_POST, payload);
-        console.log(created_Dog); // Para ver lo que genera...
+        // console.log(created_Dog); // Para ver lo que genera...
         return created_Dog;
     };
 };
@@ -63,7 +63,9 @@ export function getByQueryName(name) {
                 payload: queryName.data,
             });
         } catch (error) {
-            console.log(error);
+            alert(
+                <p>No valid name...</p>
+            );
         };
     };
 };

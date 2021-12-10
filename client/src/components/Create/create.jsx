@@ -53,7 +53,7 @@ export default function Create(){
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(input)  // Controlo qué tiene el input antes de ser enviado...
+        // console.log(input)  // Controlo qué tiene el input antes de ser enviado...
         if(input.name &&
         input.image &&
         input.height &&
@@ -93,23 +93,10 @@ export default function Create(){
         errors.height = 'No height was specified...'
         }else if(!input.life_span /*|| !validNUMS*/){
         errors.life_span = 'No life span was specified...'
-        }else if(!input.temperament){
-        errors.temperament = 'Must choose at least one temperament.'
         }
         return errors;
     };
     // console.log(errors);
-  
-    let errorT = [errors];
-
-    function isDisabled(){
-        if(errorT.temperament.length === 0) {
-            return false;
-        } else {
-            return true;
-        }
-    };
-
 
     function handleDelete(e) {
         e.preventDefault();
@@ -232,9 +219,6 @@ export default function Create(){
                             <option key={t.id} value={t.name}>{t.name}</option>
                         ))}
                     </select>
-                    {errors.temperament && (
-                        <p className='error'>{errors.temperament}</p>
-                    )}
                 </div><br />
                 
                 <div  className='buttons'>
@@ -249,7 +233,6 @@ export default function Create(){
                     className='btn'
                     value='createDog'
                     type="submit"
-                    // disabled={isDisabled}
                     id='button-submit'
                     >SUBMIT</button><br /><br />
                 <br />
