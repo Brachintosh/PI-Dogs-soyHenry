@@ -1,15 +1,74 @@
+body {
+    font-family: "Audiowide", sans-serif;
+    color: whitesmoke
+  }
+  /* ------------------------------------------------------------------------------------------------ */
 
-.about {
+.about-container {
     display: flex;
     height: 100vh;
+    width: 100%;
     justify-content: center;
     align-content: center;
     background-image: url(https://c4.wallpaperflare.com/wallpaper/725/100/11/arboles-cielo-naturaleza-nubes-wallpaper-preview.jpg);
     background-attachment: fixed;
     background-size: cover;
     opacity: 0.9;
+    text-shadow: 1.3px 1.75px rgb(19, 16, 19);
+    letter-spacing: 1.5px;
 }
 
-body {
-    font-family: "Audiowide", sans-serif;
-  }
+.about-text {
+    margin: 4%;
+}
+
+.techs-text {
+    /* margin-left: 10%; */
+}
+
+.about-description, .about-contact {
+    margin: 2vmin;
+}
+
+.about-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 75%;
+}
+
+.about-description > p {
+    text-align: left;
+}
+
+.about-contact {
+    max-width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-evenly;
+}
+
+.contact-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-item > span {
+    font-size: .8rem;
+}
+
+.contact-item-img {
+    width: 30%;
+}
+
+.contact-item-img-gmail {
+    width: 30%;
+    border-radius: 10px;
+}
