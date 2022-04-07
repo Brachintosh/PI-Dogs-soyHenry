@@ -5,18 +5,18 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { obtainDogs, obtainTemperament } from "../../redux/actions/index";
-import OrderAZ from '../Orders/OrderAZ.jsx';
-import SingleCard from '../Cards/SingleCards.jsx';
-import SearchBar from '../SearchBar/SearchBar';
-import Paginado from '../Paginado/Paginado.jsx';
-import FilterByBreeds from '../Filters/FilterByBreed.jsx';
-import OrderByWeight from '../Orders/OrderWeightHeight.jsx';
-import FilterTemps from '../Filters/FilterTemps.jsx';
+import { obtainDogs, obtainTemperament } from "../redux/actions/index";
+import OrderAZ from './Orders/OrderAZ.jsx';
+import SingleCard from './Cards/SingleCards.jsx';
+import SearchBar from './SearchBar/SearchBar';
+import Paginado from './Paginado/Paginado.jsx';
+import FilterByBreeds from './Filters/FilterByBreed.jsx';
+import OrderByWeight from './Orders/OrderWeightHeight.jsx';
+import FilterTemps from './Filters/FilterTemps.jsx';
 import './Home.css';
 
 
-export default function Homie(){
+export default function Home(){
 
     const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.perros);
