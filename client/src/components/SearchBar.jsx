@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import  { useDispatch } from "react-redux"
-import  { getByQueryName }from "../../redux/actions/index";
+import  { getByQueryName }from "../redux/actions/index";
 import './SearchBar/search.css';
 
 export default function SearchBar({paginaLocal}) {
