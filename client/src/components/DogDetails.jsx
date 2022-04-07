@@ -2,7 +2,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import './detail.css';
+import './Details/detail.css';
 
 export default function DogDetails() {
     const [dogDetail, setdogDetail] = useState(null);

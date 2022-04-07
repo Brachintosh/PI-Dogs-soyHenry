@@ -1,5 +1,5 @@
 import React from "react";
-import './About.css';
+import './About/About.css';
 import linkedin from "../../images/linkedinLogo.png";
 import github from "../../images/githubLogo.png";
 import gmail from "../../images/gmailLogo3.png";

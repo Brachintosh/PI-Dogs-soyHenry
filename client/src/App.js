@@ -4,11 +4,11 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { obtainDogs } from './redux/actions';
 import NavBar from './components/NavBar/NavBar';
-
-import Landing from './components/Landing/Landing';
-import Create from './components/Create/Create';
-import DogDetails from './components/Details/DogDetails';
-import About from './components/About/About';
+import Home from './components/Home';
+import Landing from './components/Landing';
+import Create from './components/Create';
+import DogDetails from './components/DogDetails';
+import About from './components/About';
 
 function App() {
   
@@ -25,7 +25,7 @@ function App() {
       <NavBar />
         <Switch>
           <Route exact path='/' component={Landing} />
-          <Route exact path='/home' component={Homie} />
+          <Route exact path='/home' component={Home} />
           <Route path='/create_breed' component= {Create}/>
           <Route path='/home/:id' component= {DogDetails}/>
           <Route exact path='/about' component={About} />

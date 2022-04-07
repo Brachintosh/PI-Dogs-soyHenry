@@ -1,8 +1,8 @@
 import React, { useState, useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {createDog, obtainTemperament } from "../../redux/actions/index";
-import './Create.css';
+import {createDog, obtainTemperament } from "../redux/actions/index";
+import './Create/Create.css';
 
 // ! ARREGLAR EL EFECTO DEL BOTON QUE ELIMINA AL CLICKEARSE
 
