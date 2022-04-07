@@ -16,7 +16,7 @@ import FilterTemps from '../Filters/FilterTemps.jsx';
 import './Home.css';
 
 
-export default function Home(){
+export default function Homie(){
 
     const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.perros);

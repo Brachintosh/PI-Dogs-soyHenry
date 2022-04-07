@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { obtainDogs } from './redux/actions';
 import NavBar from './components/NavBar/NavBar';
-import Home from './components/Home/Home';
+import Homie from './components/Home/Home';
 import Landing from './components/Landing/Landing';
 import Create from './components/Create/Create';
 import DogDetails from './components/Details/DogDetails';
@@ -25,7 +25,7 @@ function App() {
       <NavBar />
         <Switch>
           <Route exact path='/' component={Landing} />
-          <Route exact path='/home' component={Home} />
+          <Route exact path='/home' component={Homie} />
           <Route path='/create_breed' component= {Create}/>
           <Route path='/home/:id' component= {DogDetails}/>
           <Route exact path='/about' component={About} />
