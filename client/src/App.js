@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { obtainDogs } from './redux/actions';
 import Landing from './components/Landing/Landing.jsx';
 import Home from './components/Home/Home.jsx';
-import Create from './components/Create/Create.jsx';
+import Create from './components/Create/Create';
 import DogDetails from './components/Details/DogDetails';
 import About from './components/About/About';
 import NavBar from './components/NavBar/NavBar';
