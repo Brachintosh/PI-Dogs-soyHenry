@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import  { useDispatch } from "react-redux"
 import  { getByQueryName }from "../../redux/actions/index";
-import './search.css';
+import './SearchBar/search.css';
 
 export default function SearchBar({paginaLocal}) {
     const dispatch = useDispatch();

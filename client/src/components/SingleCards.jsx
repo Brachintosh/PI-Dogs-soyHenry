@@ -1,5 +1,5 @@
 import React from "react";
-import './SingleCard.css';
+import './Cards/SingleCard.css'
 
 // Por props recibe nombre, imagen y demas...
 export default function SingleCard({ id, name, image, temperament, weight /*, height, life_span,origin*/ }) {
