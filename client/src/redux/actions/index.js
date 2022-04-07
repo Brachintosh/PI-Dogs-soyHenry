@@ -10,10 +10,10 @@ export const ORDER_AZ = "ORDER_AZ";
 export const ORDER_WEIGHT = "ORDER_WEIGHT";
 // export const ORDER_HEIGHT = "ORDER_HEIGHT";
 
-const URL_GET = "http://localhost:3001/api/dogs";
-const URL_GET_QUERY = "http://localhost:3001/api/dogs?name=";
-const URL_POST = "http://localhost:3001/api/dogs/create";
-const URL_TEMPERAMENT = "http://localhost:3001/api/temperaments";
+const URL_GET = "/api/dogs";
+const URL_GET_QUERY = "/api/dogs?name=";
+const URL_POST = "/api/dogs/create";
+const URL_TEMPERAMENT = "/api/temperaments";
 
 
 //! Definimos las funciones que van a despachar o recibir acciones:
@@ -74,7 +74,7 @@ export function getByQueryName(name) {
 export function getDogDetails (id){
     return async function (dispatch){
         try {
-            const infoDetails = await axios.get(`http://localhost:3001/api/dogs/${id}`);
+            const infoDetails = await axios.get(`/api/dogs/${id}`);
             const llamado = await infoDetails.data;
     
             return dispatch({

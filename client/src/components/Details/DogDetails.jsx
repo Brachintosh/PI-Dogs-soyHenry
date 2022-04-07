@@ -10,7 +10,7 @@ export default function DogDetails() {
     let {id} = useParams();
 
     useEffect(()=> {
-        axios.get(`http://localhost:3001/api/dogs/${id}`)
+        axios.get(`/api/dogs/${id}`)
             .then((responseBack) => {
                 setdogDetail(responseBack.data)
             })
