@@ -25,7 +25,7 @@ conn.sync({ force: true }).then(() => {
 
   // ni bien levanta el servidor me guardo todos los temperaments
 
-  server.listen(3001, () => {
-    console.log('Server listening at Port:3001'); // eslint-disable-line no-console
+  server.listen(process.env.PORT, () => {
+    console.log('Server listening at Port:3000'); // eslint-disable-line no-console
   });
 });
