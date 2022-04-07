@@ -3,12 +3,12 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { obtainDogs } from './redux/actions';
+import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import Landing from './components/Landing/Landing';
 import Create from './components/Create/Create';
 import DogDetails from './components/Details/DogDetails';
 import About from './components/About/About';
-import NavBar from './components/NavBar/NavBar';
 
 function App() {
   
